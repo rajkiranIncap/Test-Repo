@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <decisions>
+        <name>claimtypedecision</name>
+        <label>claimtypedecision</label>
+        <locationX>372</locationX>
+        <locationY>52</locationY>
+        <defaultConnector>
+            <targetReference>No_Macth</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>claim_type_Conveyance</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Claimtypevalue</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Conveyance</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Template_Community_Claim_Form_Conveyance</targetReference>
+            </connector>
+            <label>claim type Conveyance</label>
+        </rules>
+        <rules>
+            <name>Claim_Type_Automatic_Assignment</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Claimtypevalue</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Automatic Assignment</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Claim Type Automatic Assignment</label>
+        </rules>
+    </decisions>
+    <interviewLabel>Template Community Claim Form {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Template Community Claim Form</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <name>Claim_Type</name>
+        <label>Claim Type</label>
+        <locationX>210</locationX>
+        <locationY>50</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>claimtypedecision</targetReference>
+        </connector>
+        <fields>
+            <name>claimheader1</name>
+            <extensionName>c:claimHeader</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>thirdColumnDescription</name>
+                <value>
+                    <stringValue>OMB Approval No. 2502-0611 (Exp. 4/30/2021)</stringValue>
+                </value>
+            </inputParameters>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>claimtype</name>
+            <extensionName>c:lightningRadioGroup</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>label</name>
+                <value>
+                    <stringValue>Claim Type</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>value</name>
+                <value>
+                    <elementReference>Claimtypevalue</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>optionsJson</name>
+                <value>
+                    <stringValue>[ {&quot;label&quot;: &quot;Master&quot;, &quot;value&quot;: &quot;Master&quot;},{&quot;label&quot;: &quot;01-Conveyance&quot;, &quot;value&quot;: &quot;01-Conveyance&quot;}, {&quot;label&quot;: &quot;02-Assignment&quot;, &quot;value&quot;: &quot;02-Assignment&quot;}, {&quot;label&quot;: &quot;03-Automatic Assignment&quot;, &quot;value&quot;: &quot;03-Automatic Assignment&quot;}, {&quot;label&quot;: &quot;04-Coinsurance&quot;, &quot;value&quot;: &quot;04-Coinsurance&quot;}, {&quot;label&quot;: &quot;05-Supplemental&quot;, &quot;value&quot;: &quot;05-Supplemental&quot;}, {&quot;label&quot;: &quot;06-CWCOT&quot;, &quot;value&quot;: &quot;06-CWCOT&quot;}, {&quot;label&quot;: &quot;07-PFS&quot;, &quot;value&quot;: &quot;07-PFS&quot;}, {&quot;label&quot;: &quot;Other&quot;, &quot;value&quot;: &quot;Other&quot;}, {&quot;label&quot;: &quot;31-Spec. Forb.&quot;, &quot;value&quot;: &quot;31-Spec. Forb.&quot;}, {&quot;label&quot;: &quot;32-Modification&quot;, &quot;value&quot;: &quot;32-Modification&quot;}, {&quot;label&quot;: &quot;33-Partial Claim&quot;, &quot;value&quot;: &quot;33-Partial Claim&quot;} ]</stringValue>
+                </value>
+            </inputParameters>
+            <isRequired>true</isRequired>
+            <outputParameters>
+                <assignToReference>Claimtypevalue</assignToReference>
+                <name>value</name>
+            </outputParameters>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>No_Macth</name>
+        <label>No Macth</label>
+        <locationX>381</locationX>
+        <locationY>226</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>nomatchforclaimtype</name>
+            <fieldText>No flow found for {!Claimtypevalue}</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <startElementReference>Claim_Type</startElementReference>
+    <status>Active</status>
+    <subflows>
+        <name>Template_Community_Claim_Form_Conveyance</name>
+        <label>Template Community Claim Form Conveyance</label>
+        <locationX>701</locationX>
+        <locationY>40</locationY>
+        <flowName>Template_Community_Claim_Form_Conveyance</flowName>
+        <inputAssignments>
+            <name>ClaimTypeValue</name>
+            <value>
+                <elementReference>Claimtypevalue</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <variables>
+        <name>Claimtypevalue</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

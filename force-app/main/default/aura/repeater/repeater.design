@@ -1,0 +1,18 @@
+<design:component label="Repeater Component">
+    
+    <design:attribute name="groupName" label="Metadata Group Name" description="The group name used to retrieve Dynamic Component metadata records" required="true"/>
+    <design:attribute name="objectType" label="SObject API Name" description="The API name of the SObject that to save to" />
+    <design:attribute name="recordTypeId" label="Record Type ID" description="The Record Type Id that the SObject should be saved as" />
+    <design:attribute name="parentId" label="Parent ID" description="" />
+    <design:attribute name="parentField" label="Parent ID Field" description="" />
+    <design:attribute name="value" label="Value" description="The repeater input records and output map containing deleted and saved records" />
+    <design:attribute name="title" label="Repeater Title" description="" />
+    <design:attribute name="description" label="Repeater Description" description="" />
+    <design:attribute name="columns" label="Repeater Grid Width" description="" />
+    <design:attribute name="cardTitle" label="Card Title" description="" />
+    <design:attribute name="cardDescription" label="Card Description" description="" />
+    <design:attribute name="cardColumns" label="Card Grid Width" description="" />
+    <design:attribute name="cardIcon" label="Card Icon" description="" />
+    <design:attribute name="deleteIcon" label="Card Delete Icon" description="" />
+
+</design:component>

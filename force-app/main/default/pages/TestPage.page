@@ -1,0 +1,45 @@
+<apex:page >
+    <apex:includeScript value="/support/console/45.0/integration.js"/>
+    
+    <script type="text/javascript">
+    function testIsInConsole() {        
+        debugger;
+        var redirectUrl = '/apex/TestPage';
+        
+        if (sforce.console.isInConsole()) {
+            console.log('sds');
+            //  sforce.console.openPrimaryTab(null, redirectUrl, true, 'New Service Request');
+            //sforce.console.openPrimaryTab(null, redirectUrl, true, 'New Service Request');
+             window.location.href = redirectUrl;
+        } /*else {
+            window.location.href = redirectUrl;
+        }*/
+    }
+    
+    var closeTab = function closeTab() {
+        debugger;
+        //First find the ID of the current tab to close it
+        sforce.console.getEnclosingTabId(closeSubtab);
+    }
+    
+    var closeSubtab = function closeSubtab(result) {
+        debugger;
+        //Now that we have the tab ID, we can close it
+        var tabId = result.id;
+        // If the tab has no id and success is false then we're on the navigation tab.
+        console.log('tabId : '+tabId);
+        if (typeof tabId != "undefined" && tabId != "null") {
+            sforce.console.closeTab(tabId);
+            //   sforce.console.refreshPrimaryTabById(tabId, true);
+        } else {
+            if (sforce.console.isInConsole())
+            {
+                console.log('refreshnavigation');
+                //  sforce.console.refreshNavigationTab(null);
+            }
+        }
+    };
+    
+    testIsInConsole();
+    </script>
+</apex:page>

@@ -1,0 +1,15 @@
+<design:component label="Form Table">
+    
+    <design:attribute name="groupName" label="Form Name" description="The form name used to retrieve Dynamic Component metadata records from the configured in database." required="true"/>
+    <design:attribute name="objectType" label="SObject API Name" description="The API name of the SObject that to save to" />
+    <design:attribute name="recordTypeId" label="Record Type ID" description="The Record Type Id that the SObject should be saved as" />
+    <design:attribute name="value" label="Value" description="The input records and output map containing saved records" />
+    <design:attribute name="title" label="Form Title" description="If you want to give heading for form table." />
+    <design:attribute name="description" label="Form Description" description="If you want to give paragraph description for form table" />
+    <design:attribute name="formGroupName" label="From Group Name" description="For multiple screen to get the data based on the from group name." />
+    <design:attribute name="columns" label="Form Table Column" description="Table columns per row." />
+    <design:attribute name="metadataRecordDeveloperName" label="Related sObject Field API Name" description="The attribute will hold the sobject field API name which must exist in
+                                                                                  the related sobject to map the metadata record properly while modifying the 
+                                                                                  data" />
+
+</design:component>

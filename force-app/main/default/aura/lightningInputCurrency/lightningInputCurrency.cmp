@@ -1,0 +1,27 @@
+<!-- 
+        @Author: Incapsulate - 06/11/2019		The child component created to extend the parent component functionality.
+                                            Child component can also enhance the functionality as per requirement.
+-->
+<aura:component implements="lightning:availableForFlowScreens,c:GenericAttributeInterface" access="global" extends="c:lightingInputFSC">
+    	<aura:handler event="c:onChangeApplicationEvent" action="{!c.handleApplicationEvent}" description="Application event fire after on change of the field value and execute the skip logic funtionality."/>    	
+    	<aura:handler name="init" value="{!this}" action="{!c.init}" description="init fuction to hanlde initial munipulation or dom or any client-server update."/>   
+    <!--ILA LITE-->
+    <aura:attribute name="type" type="String" required="true" default="Number" description="The type of the input. This value defaults to text."/>
+    <aura:attribute name="value" type="Decimal" default="" description="Specifies the value of an input element."/>
+    <aura:handler event="c:eventToValidateComponent" action="{!c.handleApplicationValidateComponent}" description="Counts the Number of Inout components"/>    	     
+    <!--ILA LITE-->
+    <aura:if isTrue="{!v.columnsInt > 8}">
+          <aura:html tag="style">
+            .slds-scope .slds-form-element__label {
+                    width: max-content;
+              		
+              }    
+              
+              .slds-scope .slds-no-flex {
+                    flex: none;
+                    font-weight: bold;
+                }
+          </aura:html>
+   </aura:if>
+     
+</aura:component>

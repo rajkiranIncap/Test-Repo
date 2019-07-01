@@ -1,0 +1,5 @@
+<design:component label="Claim Header">
+	<design:attribute name="firstColumnDescription" label="First Column Description" default=""/>
+ 	<design:attribute name="secondColumnDescription" label="Second Column Description" default=""/>
+    <design:attribute name="thirdColumnDescription" label="Third Column Description" default=""/>
+</design:component>

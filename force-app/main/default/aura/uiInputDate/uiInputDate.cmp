@@ -1,0 +1,35 @@
+<!-- 
+  @author: Incapsulate
+  @since:  26/05/2019	
+  @Description: This component is used to full the requirment for multiple format date input field. lightning:input type="date" does not
+    support date format like dd/MM/yyyy etc. this component support the date format using the attribute "format" 
+-->
+<aura:component implements="lightning:availableForFlowScreens,c:GenericAttributeInterface" access="global">
+    <aura:handler event="c:onChangeApplicationEvent" action="{!c.handleApplicationEvent}" description="Application event fire after on change of the field value and execute the skip logic funtionality."/>    	
+    
+    <aura:attribute name="format" default="MMM d, yyyy" type="string" description="Default value for date format is MMM d, yyyy.Define your own valid format for the date field to display in the input text box ex: dd-MM-yyyy "/>
+    <aura:attribute name="value" default="" type="String" description="Value to display on ui and persit to database."/>
+    <aura:attribute name="valueDate" default="" type="Date" description="Value to display on ui and persit to database."/>
+    <aura:attribute name="label" default="Date" type="String" description="Label for the input field.Default label is Date."/>
+    <aura:attribute name="errorMsg" default="Enter valid date format" type="String" description="error message while user enter wrong date"/>
+    <aura:attribute name="columns" type="String" default="1"/>
+    <aura:attribute name="headerDescription" type="String" default=""/>
+    
+    <aura:if isTrue="{!v.isRender}">
+        <div class="{!'padding-px slds-scope slds-medium-size_1-of-'+ v.columns}">
+            <aura:if isTrue="{!v.fieldBinding == ''}">
+                <ui:inputDate class="slds-input"
+                              aura:id="uiInputDate" value="{!v.valueDate}" label="{!v.label}"
+                              displayDatePicker="true" format="{!v.format}"
+                              change="{!c.validatedate}" />
+                <aura:set attribute="else">
+                    <ui:inputDate class="slds-input"
+                                  aura:id="uiInputDate" value="{!v.value}" label="{!v.label}"
+                                  displayDatePicker="true" format="{!v.format}"
+                                  change="{!c.validatedate}" />
+                </aura:set>                    
+            </aura:if>
+        </div>
+        
+    </aura:if>
+</aura:component>

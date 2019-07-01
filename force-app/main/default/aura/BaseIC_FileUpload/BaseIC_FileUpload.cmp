@@ -1,0 +1,84 @@
+<!-- 
+* @Author Incapsulate
+* @Since 02-05-2019
+* @Description: This component is used to upload files.
+-->
+
+<aura:component >
+    
+    <aura:attribute access="public" name="sObjectName" type="String"
+                    description="The object name of the record to be displayed. Provided by force:hasSObjectName interface." />
+    <aura:attribute access="public" name="recordId" type="String"
+                    description="The ID of the record to be displayed. Provided by force:hasRecordId interface." />
+    <aura:attribute access="public" name="componentCardTitle" type="String" default="Files"
+                    description="Title of the lightning:card component wrapping content." />
+    <aura:attribute access="public" name="selectedFiles" type="Object[]"
+                    description="Array of files shared to records of the selected relationship. These are the files displayed in the component." />
+    <aura:attribute access="public" name="renditionMap" type="Object" description="Documents Rendition Type Map" />
+    <aura:attribute access="public" name="multiple" type="Boolean" default="true" />
+    <aura:attribute access="public" name="refresh" type="Boolean" default="true" />
+    <aura:attribute access="public" name="disabled" type="Boolean" default="false" />
+    <aura:attribute access="public" name="columnCount" type="Integer" default="3" />
+    <aura:attribute access="public" name="viewAll" type="Boolean" default="false" />
+    <aura:attribute access="public" name="baseUrl" type="String" />
+    <aura:attribute access="public" name="titleValue" type="String" />
+    <aura:attribute access="public" name="descriptionValue" type="String" />
+    <!-- Events -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.refresh}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.recordId}" action="{!c.handleWorkorderChanged}" />
+    <div class="slds-scope slds-medium-size_1-of-2">
+        <div aura:id="uploadCard" class="slds-card__header slds-is-relative" style="position:relative;">
+            <!-- Markup -->
+            <lightning:spinner aura:id="init-spinner" variant="brand" class="slds-hide" />
+            <lightning:spinner aura:id="spinner" variant="brand" class="slds-hide" />
+            
+            <lightning:card iconName="{!( empty(v.componentCardTitle) ? '' : 'standard:file' )}">
+                
+                <aura:set attribute="actions">
+                    <aura:if isTrue="{!v.isContentTypeEnable}">
+                        <lightning:layout>
+                            <div class="slds-grid slds-wrap " style="padding-left:84px">
+                                <div class="slds-scope slds-medium-size_1-of-2" style="padding-left:60px">
+                                    <c:dynamicPicklist label="Content Type"  value="{!v.typeValue}" field="{!v.sobjectFieldApiName}" object="{!v.sobjectApiName}" columns="1"/>                                    
+                                </div>
+                                <div class="{!v.isContentTypeEnable ?'slds-scope slds-medium-size_1-of-1' :'slds-scope slds-medium-size_1-of-1'}" style="padding-left:60px">
+                                    <c:lightningTextArea label="File Description" value="{!v.descriptionValue}" aura:id="textAreaCmp" columns="{!v.isContentTypeEnable ?'2' :'1'}"/>
+                                </div>
+                            </div>
+                        </lightning:layout>
+                    </aura:if>
+                    <lightning:layout class="{!v.isContentTypeEnable ?'layoutpadding-left-150' :'layoutpadding-left-135'}">
+                        <lightning:fileUpload name="fileUploader" multiple="{!v.multiple}" disabled="{!v.disabled}"
+                                              recordId="{!v.recordId}" onuploadfinished="{! c.handleUploadFinished }" /> 
+                    </lightning:layout>
+                </aura:set>
+                <aura:set attribute="title">
+                    <span class="slds-card__header-link">{!v.componentCardTitle+'('+v.selectedFiles.length+')'}</span>
+                </aura:set>
+                <lightning:layout multipleRows="true"
+                                  class="{! if(v.viewAll &amp;&amp; (v.selectedFiles.length > 6),'slds-scrollable_y scrollAble','')}">
+                    <aura:iteration var="file" items="{!v.selectedFiles}" indexVar="fileIndex">
+                        <aura:if isTrue="{! if(fileIndex > 3, v.viewAll , true)}">
+                            <lightning:layoutItem size="5"
+                                                  class="{! if( fileIndex%2 == 0 ,'','leftMargin ') +' rightMargin'}">
+                                <c:BaseIC_FileTile selectedFiles="{!v.selectedFiles}" file="{!file}" baseUrl="{!v.baseUrl}"
+                                                   renditionMap="{!v.renditionMap}" enableContentType="{!v.isContentTypeEnable}" enableAdditionInfo="{!v.enableAdditionInformation}" />
+                            </lightning:layoutItem>
+                        </aura:if>
+                    </aura:iteration>
+                </lightning:layout>
+                <div class="{! if(v.selectedFiles.length > 6,'','slds-hide')}">
+                    <aura:if isTrue="{!!v.viewAll}">
+                        <footer class="slds-card__footer slds-align_absolute-center">
+                            <a class="slds-card__footer-action" href="javascript:void(0);"
+                               onclick="{!c.handleViewAll}">ViewAll
+                                <span class="slds-assistive-text">Files</span>
+                            </a>
+                        </footer>
+                    </aura:if>
+                </div>
+            </lightning:card>
+        </div>
+    </div>
+</aura:component>

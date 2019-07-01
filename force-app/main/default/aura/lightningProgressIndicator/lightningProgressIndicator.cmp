@@ -1,0 +1,27 @@
+<!-- 
+* @Author Incapsulate
+* @Since 02-05-2019
+* @Description: This component is used as Progress Indicator.
+-->
+<aura:component implements="lightning:availableForFlowScreens" access="global">
+   <!-- Attributes that store $Flow.ActiveStages and $Flow.CurrentStage -->
+   <aura:attribute name="stages" type="String[]"/>
+    <aura:attribute name="stagesStr" type="String"/>
+   <aura:attribute name="currentStage" type="String"/>
+    <aura:attribute name="canBack" type="Boolean" />
+   <aura:attribute name="canNext" type="Boolean" />
+    <aura:attribute name="actionClicked" type="string"/>
+<aura:attribute name="components" type="Object[]" description="List of dynamically created components to display as items in the repeater" />
+   <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    <div class="{!'slds-scope slds-size_1-of-1'}">
+    <div aura:id="indicatordiv"  style="pointer-events:none;">
+        <!--Incapsulate Added the dynamic component creation logic for progress indicator -->
+   <lightning:progressIndicator aura:id="progressIndicator" currentStep="{!v.currentStage}"
+                                type="path">
+    		<aura:iteration items="{!v.components}" var="cmp">               
+                    {!cmp}
+            </aura:iteration>
+    </lightning:progressIndicator>
+        </div>
+    </div>
+</aura:component>

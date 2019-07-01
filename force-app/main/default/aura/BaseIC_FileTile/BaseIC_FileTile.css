@@ -1,0 +1,19 @@
+.THIS .secondaryFields span > span:after { 
+    content: "\2022";
+    margin: 0 5px;
+}
+.THIS .slds-button_icon-bare{
+    color: rgb(245, 245, 245);
+}
+.THIS .icons{
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.THIS.darkBackGround .darkBackGround{
+    background-color: rgba(0,0,0,.8);
+}
+.THIS .LoadingSpinner{
+    background: transparent;
+    margin: 20rem;
+}

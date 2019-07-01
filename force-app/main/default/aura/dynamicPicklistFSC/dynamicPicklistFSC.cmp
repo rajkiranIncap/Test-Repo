@@ -1,0 +1,28 @@
+<aura:component controller="PopulatePicklist"  access="global" extensible="true" abstract="true">
+
+  <aura:attribute name="field" type="String" description="Field Api name of sObject."/>
+  <aura:attribute name="object" type="String" description="API name of sObject."/>
+  <aura:attribute name="options" type="List" description="Dynamic picklist"/>
+  <aura:attribute name="value" type="string" description="Selected value in picklist"/>
+  <aura:attribute name="label" type="string" description="Label for picklist"/>  
+   <aura:attribute name="columns" type="string" default="2" description=""/>
+    <aura:attribute name="Required" type="Boolean" default="false" description=""/> 
+  <aura:attribute name="recordTypeDeveloperName" type="String" description="'Record type developer name' of sObject based on this we need to retrieve the picklist."/>
+
+ <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    <aura:if isTrue="{!v.isRender}"> <!-- 07/02/2019 incapsulate Added condition for depedent skip logic-->
+  		<div class="{!'padding-px slds-scope slds-medium-size_1-of-'+v.columns}">
+        <div class="{!'padding-px slds-scope slds-medium-size_1-of-1'}">
+              <lightning:select onchange="{!c.onInputChange}"  class="{!'slds-size_1-of-1'}" name="selectItem" label="{!v.label}" value="{!v.value}" required = "{!v.Required}" >
+                  <option value="">--Select--</option>
+                <aura:iteration items="{!v.options}" var="option">
+                  <option value="{!option.value}" selected="{!option.value==v.value}">{!option.label}</option>
+                </aura:iteration>
+              </lightning:select>
+          <div class="slds-col icon-comment" >
+           {!v.body}
+      	  </div>
+       </div>
+        </div>
+    </aura:if>        	
+</aura:component>

@@ -1,0 +1,9 @@
+<aura:component implements="lightning:availableForFlowScreens,force:lightningQuickAction,force:hasRecordId,force:appHostable,flexipage:availableForRecordHome,force:hasRecordId,force:hasSObjectName,forceCommunity:availableForAllPageTypes" access="global" controller="CustomerPolicyController">
+    
+    <aura:attribute name="isLaunchFlow" type="boolean" default="true"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    
+    <aura:if isTrue="{!v.isLaunchFlow}">
+        <lightning:flow aura:id="flow" />
+    </aura:if>
+</aura:component>

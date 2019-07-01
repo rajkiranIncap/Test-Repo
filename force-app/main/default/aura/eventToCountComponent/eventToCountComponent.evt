@@ -1,0 +1,10 @@
+<!-- 
+* @Author Incapsulate
+* @Since 02-05-2019
+* @Description: This event is used to count Component.
+-->
+<aura:event type="APPLICATION" description="Event to count input components" >
+    <aura:attribute name="count" type="Integer" />
+    <aura:attribute name="calledForValidation" type="Boolean" />
+    <aura:attribute name="isValid" type="Boolean" />
+</aura:event>

@@ -1,0 +1,7 @@
+<!-- 
+        Incapsulate - 01/31/2019		The child component created to extend the parent component functionality.
+                                            Child component can also enhance the functionality as per requirement.
+-->
+<aura:component implements="lightning:availableForFlowScreens" access="global" extends="c:DynamicTable">
+
+</aura:component>

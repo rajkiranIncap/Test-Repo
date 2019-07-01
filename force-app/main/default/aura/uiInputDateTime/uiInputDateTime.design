@@ -1,0 +1,42 @@
+<design:component label="UI Input Date Time">
+    <design:attribute name="format" label="format" default=""/>
+    <design:attribute name="errorMsg" label="Error Message" default=""/>
+    <design:attribute name="columns" label="Columns" default="1"/>
+    <design:attribute name="value" label="Value" default=""/>
+    <!--
+Description	Token	Output
+Day of month	d	1 … 31
+Day of month	dd	01 … 31
+Day of month. Deprecated. Use dd, which is identical.	DD	01 … 31
+Day of week (number)	E	0 … 6
+Day of week (short name)	EEE	Sun … Sat
+Day of week (long name)	EEEE	Sunday … Saturday
+Month	M	1 ... 12
+Month	MM	01 … 12
+Month (short name)	MMM	Jan … Dec
+Month (full name)	MMMM	January … December
+Year (two digits)	yy	17
+Year (four digits)	yyyy	2017
+Year. Deprecated. Use yyyy, which is identical.	y	2017
+Year. Deprecated. Use yyyy, which is identical.	Y	2017
+Year. Deprecated. Use yy, which is identical.	YY	17
+Year. Deprecated. Use yyyy, which is identical.	YYYY	2017
+Hour of day (1-12)	h	1 … 12
+Hour of day (0-23)	H	0 … 23
+Hour of day (00-23)	HH	00 … 23
+Hour of day (1-24)	k	1 … 24
+Hour of day (01-24)	kk	01 … 24
+Minute	m	0 … 59
+Minute	mm	00 … 59
+Second	s	0 … 59
+Second	ss	00 … 59
+Fraction of second	SSS	000 … 999
+AM or PM	a	AM or PM
+AM or PM. Deprecated. Use a, which is identical.	A	AM or PM
+Zone offset from UTC	Z	-12:00 … +14:00
+Quarter of year	Q	1 … 4
+Week of year	w	1 … 53
+Week of year	ww	01 … 53
+-->
+    
+</design:component>

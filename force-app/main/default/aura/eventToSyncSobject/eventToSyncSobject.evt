@@ -1,0 +1,8 @@
+<!-- 
+* @Author Incapsulate
+* @Since 02-05-2019
+* @Description: This event is used to sync Sobject.
+-->
+<aura:event type="APPLICATION" description="Event to fire and update all the parent child related sobject." >
+    <aura:attribute name="FormDetailObject" type="Object" />
+</aura:event>

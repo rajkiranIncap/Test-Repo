@@ -1,0 +1,9 @@
+<!-- 
+* @Since 02-05-2019
+* @Description: This component is used close the current browser tab.
+-->
+<aura:component implements="lightning:availableForFlowScreens,forceCommunity:availableForAllPageTypes" access="global">
+    <lightning:workspaceAPI aura:id="workspace"/>
+    <lightning:button label="Finish" onclick="{!c.closeFocusedTabAndOpenNewTab}"/>
+    
+</aura:component>

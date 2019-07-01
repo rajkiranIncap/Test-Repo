@@ -1,0 +1,5 @@
+<aura:component >
+    <ltng:require styles="{!$Resource.esri+'/esri.css'}" 
+     scripts="/resource/esri/init.js"  />
+    <div id="mapDiv"></div>
+</aura:component>

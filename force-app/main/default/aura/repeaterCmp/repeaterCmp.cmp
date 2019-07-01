@@ -1,0 +1,52 @@
+<!-- 
+* @Author Incapsulate
+* @Since 02-05-2019
+* @Description: This component is used as Progress Indicator.
+-->
+<aura:component implements="lightning:availableForFlowScreens" controller="DynamicRepeaterController" access="global">
+    
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:attribute name="groupName" type="String" description="The group name used to retrieve Dynamic Component metadata records" />
+    <aura:attribute name="objectType" type="String" description="The API name of the SObject that to save to" />
+    <aura:attribute name="recordTypeId" type="String" description="The Record Type Id that the SObject should be saved as" />
+    <aura:attribute name="parentId" type="String" description="" />
+    <aura:attribute name="parentField" type="String" description="" />
+    <aura:attribute name="toCreate" type="Object[]" description="List of DynamicComponentWrapper records to pass to each item" />
+    <aura:attribute name="components" type="Object[]" description="List of dynamically created components to display as items in the repeater" />
+
+    <!-- repeater display attributes -->
+    <aura:attribute name="title" type="String" default="" description="The title of the repeater" />
+    <aura:attribute name="description" type="String" default="" description="The title of the repeater" />
+    <aura:attribute name="columns" type="Integer" default="1" description="The numder of columns in the repeater" />
+
+    <!-- card display attributes -->
+    <aura:attribute name="cardIcon" type="String" default="standard:account" description="The icon to use for the card, formatted as &quot;category:icon&quot;" />
+    <aura:attribute name="deleteIcon" type="String" default="utility:delete" description="The icon to use for delete, formatted as &quot;category:icon&quot;" />
+    <aura:attribute name="cardTitle" type="String" default="New Item" description="The title to be displayed on each card" />
+    <aura:attribute name="cardDescription" type="String" default="" description="The title to be displayed on each card" />
+    <aura:attribute name="cardColumns" type="String" default="1" description="The title to be displayed on each card" />
+
+    <aura:attribute name="value" type="String" description="JSON value object consisting of saved and deleted lists" />
+    <aura:attribute name="deletedRecords" type="Object[]" description="List of deleted records that have corresponding ID values" />
+    <aura:attribute name="cardIndex" type="Integer" default="0" description="Card index" />
+
+    <aura:attribute name="shouldRegister" type="Boolean" default="true" description="Indicates that this component should register for validations." />
+    
+     <div class="{!'slds-size_1-of-1 slds-medium-size_1-of-' + v.columns}" >
+        <div class="slds-p-around_small slds-text-heading_medium"><h1>{!v.title}</h1></div>
+        <div class="slds-p-bottom_small slds-p-horizontal_small slds-text-heading_medium">
+            <p>{!v.description}</p>
+        </div>
+        <div class="slds-grid slds-wrap">
+            <aura:iteration items="{!v.components}" var="cmp">
+                <div class="{!'slds-size_1-of-1 slds-medium-size_1-of-' + v.columns}" >
+                    {!cmp}
+                </div>
+            </aura:iteration>
+        </div>
+    	<lightning:button label="{!(join('','Add '+ v.cardTitle))}" variant="brand" onclick="{!c.addClicked}" />
+    </div>
+    
+</aura:component>

@@ -1,0 +1,126 @@
+<!-- 
+* @Author Incapsulate
+* @Since 02-05-2019
+* @Description: This component is used for dynamic dependent picklist.
+-->
+<aura:component implements="lightning:availableForFlowScreens,c:GenericAttributeInterface,forceCommunity:availableForAllPageTypes" access="global"
+                controller="DependentPicklistController">
+    <!-- call doInit function on component load -->  
+    <aura:handler name="init" value="this" action="{!c.doInit}"/>
+    <aura:handler name="onchangehandle" event="c:dependentlightningSelectEvt" action="{!c.onControllerFieldChange}" description=""/> 	
+    
+    <!-- aura attributes-->  
+    <aura:attribute name="listControllingValues" type="list" default="[{label:'--None--',value:''}]" description="to store controller field values"/>
+    <aura:attribute name="listDependingValues" type="list" default="[{label:'--None--',value:''}]" description="to store dependent field values"/>
+    <aura:attribute name="depnedentFieldMap" type="map" description="map to store dependent values with controlling value"/>
+    <aura:attribute name="bDisabledDependentFld" type="boolean" default="true"/> 
+    <aura:attribute name="disablecontrollingfield" type="Boolean" default="false"/> 
+    <aura:attribute name="hiddencontrollingfield" type="Boolean" default="false"/> 
+    <!--Note: Need to remove the default values from below attributes -->
+    <aura:attribute name="objDetail" type="Object" default=""/>
+    <aura:attribute name="objDetailString" type="String" default="" description="JSON value of the object"/>
+    <aura:attribute name="objectApiName" type="String" default=""/>
+    <aura:attribute name="controllingFieldAPI" type="string" default="" description="store field API name of Controller field"/>
+    <aura:attribute name="dependingFieldAPI" type="string" default="" description="store field API name of dependent field"/>
+    <aura:attribute name="components" type="Object[]" description="List of dynamically created components to display as items in the dependent picklist" />
+    <aura:attribute name="childcomponents" type="Object[]" description="List of dynamically created components to display as items in the dependent picklist" />
+    <aura:attribute name="controlfieldvalue" type="String" default="" description="this reference needs to be set from ILA lite flow record variable"/>
+    <aura:attribute name="dependentfieldvalue" type="String" default="" description="this reference needs to be set from ILA lite flow record variable"/>
+    <aura:attribute name="validate" type="Aura.Action"/> 
+    <aura:attribute name="label" type="String" default="Country"/>
+    <aura:attribute name="dependentLabel" type="String" default="City"/>
+    <aura:attribute name="description" type="String" default=""/>
+    <aura:attribute name="columns" type="String" default="2"/>
+    <aura:attribute name="parentRequired" type="Boolean" default="false"/>
+    <aura:attribute name="ChildRequired" type="Boolean" default="false"/>
+    <!-- if dependent picklist comes from the sobject data 
+		Ex. controlling field sobject API country__c, depedent list comes from state__c 
+    -->
+    
+    <aura:attribute name="isDepedentBasedOnSobjects" type="Boolean" default="false" 
+                    description="if dependent picklist comes from the sobject data 
+		Ex. controlling field sobject API controllingSobjectAPI=country__c, depedent list comes from dependentSobjectAPI=state__c, 
+                                 controllingSobjectFieldAPI=Name,dependentSobjectFieldAPI=Name"/>
+    <aura:attribute name="controllingSobjectAPI" type="String" default=""/>
+    <aura:attribute name="dependentSobjectAPI" type="String" default=""/>
+    <!--<aura:attribute name="controllingSobjectFieldAPI" type="String" default=""/>
+    <aura:attribute name="dependentSobjectFieldAPI" type="String" default=""/>-->
+    
+    <aura:if isTrue="{!v.isRender}"> <!-- 07/02/2019 Incapsulate Added condition for depedent skip logic-->        	
+        <aura:if isTrue="{!v.description != ''}"> 
+                <div class="padding-px slds-medium-size_1-of-1"><label class="slds-form-element__label">{!v.description}</label></div>
+        </aura:if>        	
+            <div aura:id="dynamicdependentpicklistdiv" id="dynamicdependentpicklistdiv" name="dynamicdependentpicklistdiv" class="{!'slds-medium-size_1-of-'+v.columns}">
+                <div class="slds-grid slds-wrap">
+                    <div class="{!v.hiddencontrollingfield ? 'displaynone': 'slds-medium-size_1-of-2'}" style="padding:5px">
+                        <!--Controller Field-->
+                        <lightning:select aura:id="controllfield"  class="slds-form-element__control"
+                                          name="controllerFld"
+                                          value="{!v.controlfieldvalue}"
+                                          label="{!v.label}"
+                                          required = "{!v.parentRequired}"
+                                          disabled="{!v.disablecontrollingfield}"
+                                          onchange="{!c.onControllerFieldChange}">
+                            <aura:iteration items="{!v.listControllingValues}" var="contval">
+                                <option value="{!contval.value}" selected="{!contval.value==v.controlfieldvalue}">{!contval.label}</option>
+                            </aura:iteration>
+                        </lightning:select>
+                        
+                    </div>
+                    <!--Dependent Field-->
+                    <div class="{!v.hiddencontrollingfield ? 'slds-medium-size_1-of-1': 'slds-medium-size_1-of-2'}" style="padding:5px">
+                        <lightning:select aura:id="dependentfield"  class="slds-form-element__control"
+                                          name="dependentFld"
+                                          value="{!v.dependentfieldvalue}"
+                                          required = "{!v.ChildRequired}"
+                                          label="{!v.dependentLabel}"
+                                          disabled="{!v.bDisabledDependentFld}"
+                                          >
+                            <aura:iteration items="{!v.listDependingValues}" var="depenval">
+                                <option value="{!depenval.value}" selected="{!depenval.value==v.dependentfieldvalue}">{!depenval.label}</option>
+                            </aura:iteration>
+                        </lightning:select>
+                        
+                    </div>
+                </div>
+            </div>
+        
+    </aura:if>
+   
+    <aura:html tag="style">
+       .slds-scope .slds-select_container:before, .slds-scope .slds-select_container:after {
+            height: 10px;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 0px;
+        }   
+        
+   </aura:html>
+    <!--
+NOTE: below code may need to refactored while using the ILA
+    <lightning:layoutItem size="12" padding="around-small">   
+    <aura:iteration items="{!v.components}" var="cmp">                                
+                                <div class="" >
+                                    {!cmp}
+                                </div>                                
+                            </aura:iteration> 
+    </lightning:layoutItem>
+    
+    <lightning:layoutItem size="12" padding="around-small"> 
+         <aura:iteration items="{!v.childcomponents}" var="cmp">                                
+                                    <div class="" >
+                                        {!cmp}
+                                    </div>                                
+                                </aura:iteration> 
+         
+        <aura:if isTrue="{!v.childcomponents.length ==90 }">
+             <lightning:select name="dependenntFld"
+                          value=""
+                          label="City"
+                          disabled="{!v.bDisabledDependentFld}">
+            
+        </lightning:select>
+            
+        </aura:if>
+    </lightning:layoutItem>-->
+</aura:component>

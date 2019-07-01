@@ -1,0 +1,9 @@
+<aura:component extensible="true" abstract="true">
+    <aura:attribute name="value" type="String" />
+    
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+    
+    <div class="{!'padding-px slds-scope slds-medium-size_1-of-'+ v.columns}">
+    	<lightning:inputRichText value="{!v.value}" label="{!v.label}" />
+    </div>
+</aura:component>

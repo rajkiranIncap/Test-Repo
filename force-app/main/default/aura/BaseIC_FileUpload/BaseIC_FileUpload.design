@@ -1,0 +1,17 @@
+<design:component label="Files">
+
+    <design:attribute name="sObjectName"
+                      label="Object Name"
+                      description="API name of Sobject"/>
+
+    <design:attribute name="componentCardTitle"
+                      label="Title"
+                      default="Files"
+                      description="Title of the component on the page."/>
+    
+    <design:attribute name="recordId"
+                      label="record Id"
+                      description="Record id of the record."/>
+    
+
+</design:component>

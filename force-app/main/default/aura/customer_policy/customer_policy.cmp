@@ -1,0 +1,62 @@
+<!-- Component Name - customer_policy.cmp -->
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CustomerPolicyController" >
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:attribute name="PolicyList" type="Object[]" /> 
+    
+    <article class="slds-card">
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__body">
+                    <h2 class="slds-card__header-title">
+                        <a href="javascript:void(0);" class="slds-card__header-link slds-truncate" title="Accounts">
+                            <span>Policy Information</span>
+                        </a>
+                    </h2>
+                </div>
+            </header>
+        </div>
+        <br/>
+        <br/>        
+        <table class="slds-table slds-table_bordered slds-table_striped slds-table_cell-buffer slds-table_fixed-layout">
+            <thead>
+                <tr class="slds-text-heading_label">
+                    <th scope="col"><div class="slds-truncate" title="Policy Name">Policy Name</div></th>
+                    <th scope="col"><div class="slds-truncate" title="Policy Number">Policy Number</div></th>
+                    <th scope="col"><div class="slds-truncate" title="Type">Type</div></th>
+                    <th scope="col"><div class="slds-truncate" title="Expiration Date">Expiration Date</div></th>
+                    <th scope="col"><div class="slds-truncate" title="Claim"></div></th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.PolicyList}" var="pl" indexVar="index">
+                    <tr>
+                        <td>
+                            <div class="slds-truncate" title="{!pl.Policy_Name__c}">{!pl.Policy_Name__c}</div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate" title="{!pl.Universal_Policy_Number__c}">{!pl.Universal_Policy_Number__c}</div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate" title="{!pl.Policy_Type__c}">{!pl.Policy_Type__c}</div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate" title="{!pl.Expiration_Date__c}">{!pl.Expiration_Date__c}</div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate" title="">
+                                <button class="slds-button slds-button_neutral" type="button" id="{!pl.Id}" onclick="{!c.handleClick}">File a claim</button>                        
+                            </div>
+                        </td>
+                    </tr>
+                    
+                </aura:iteration>
+                
+            </tbody>
+        </table>        
+    </article>
+    
+    
+    
+</aura:component>

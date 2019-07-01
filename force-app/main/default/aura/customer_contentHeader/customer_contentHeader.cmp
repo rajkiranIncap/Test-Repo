@@ -1,0 +1,14 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+    <aura:handler event="aura:doneRendering" action="{!c.doneRendering}" />
+    <aura:handler event="c:stateChanged" action="{!c.stateChanged}" />
+    
+    <aura:attribute name="loggedInUser" type="User" description="Logged In User"/>
+    <aura:attribute name="page" type="String" description="Page Name" default="Home"/>
+    
+	<div class="slds-p-around_x-large" Style="background-color:#fd3168;font-size: 25px;color: #ffffff">
+        <aura:if isTrue="{!v.loggedInUser.Id}">
+    	<h1>{!v.loggedInUser.Name}'s {!v.page} Page</h1>
+		</aura:if>
+    </div>
+    
+</aura:component>

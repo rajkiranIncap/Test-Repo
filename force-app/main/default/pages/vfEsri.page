@@ -1,0 +1,45 @@
+<apex:page >    
+    <script type="text/javascript" src="/resource/esri/init.js"></script>  
+    <link rel="stylesheet" href="/resource/esri/esri.css"></link>      
+    <style type="text/css">
+        #map, .map.container {
+            padding:0;
+            margin:0;
+            height:100%;
+        }
+
+        #updatingProgress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 1
+        }
+
+        /* hide the progress bar when map isn't updating */
+        #map:not([data-updating]) #updatingProgress {
+            display: none;
+        }        
+    </style>
+    <script>
+        require(["esri/map"], function (Map) {
+            var map;
+
+            map = new Map("map", {
+                basemap: "streets",
+                center: [-73.985130, 40.758896],
+                zoom: 10,
+                showAttribution: true
+            });
+            var point = new esri.geometry.Point(-73.985130, 40.758896);
+            point = esri.geometry.geographicToWebMercator(point);
+            var symbol = new esri.symbol.PictureMarkerSymbol("http://maps.google.com/mapfiles/ms/icons/blue-dot.png", 32, 32);
+            var graphic = new esri.Graphic(point, symbol);
+            var layer = new esri.layers.GraphicsLayer();
+            layer.add(graphic);
+            map.addLayer(layer);    
+        });
+    </script>
+    <div id="map">
+        <progress id="updatingProgress">Updating map...</progress>
+    </div>
+</apex:page>

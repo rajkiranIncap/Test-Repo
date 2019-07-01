@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Form_Table_Element__c</fullName>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Form Table Element</label>
+    <referenceTo>Form_Table_Element__mdt</referenceTo>
+    <relationshipLabel>Form Table Element Attributes</relationshipLabel>
+    <relationshipName>Form_Table_Element_Attributes</relationshipName>
+    <required>true</required>
+    <type>MetadataRelationship</type>
+    <unique>false</unique>
+</CustomField>

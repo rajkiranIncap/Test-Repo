@@ -1,0 +1,55 @@
+<!-- 
+* @Author Incapsulate
+* @Since 02-05-2019
+* @Description: This component is used for dynamic Radio group.
+-->
+<aura:component  implements="lightning:availableForFlowScreens,c:GenericAttributeInterface" access="global">
+    <aura:handler event="c:onChangeApplicationEvent" action="{!c.handleApplicationEvent}" description="Application event fire after on change of the field value and execute the skip logic funtionality."/>    	
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    
+    <aura:attribute name="options" type="List" default="" />
+    <aura:attribute name="type" type="String" default="radio" />
+    <aura:attribute name="label" type="String" required="true" default="" description="Text label for the Radio group."/>
+    <aura:attribute name="name" type="String" description="Specifies the name of an Radio group element."/>
+    <aura:attribute name="value" type="String" default=""/>
+    <aura:attribute name="valueAsBoolean" type="Boolean" default=""/>
+    <aura:attribute name="disabled" type="String" description="Specifies that an input field is disabled. This value defaults to false."/>
+  	<aura:attribute name="required" type="String" description="Specifies that an input field must be filled out before submitting the form. This value defaults to false."/>
+	<aura:attribute name="optionsJson" type="String" default='[{"label": "label1", "value": "option1"},{"label": "label2", "value": "option2"}]'/>
+    <aura:attribute name="isHorizontalDisplay" type="Boolean" default="false" description="If you want to display radio group as horizontal and the checkbox as square box than make this attribute to true."/>
+    <aura:attribute name="content" type="String" default=""/>
+    <aura:attribute name="columns" type="String" default="2"/>
+   <!-- <div class="slds-grid slds-wrap ">-->
+  <div class="{!'padding-px slds-scope slds-medium-size_1-of-'+v.columns}">
+	<aura:if isTrue="{!v.content != ''}">
+    	<c:lightningInfo content="{!v.content}" />
+    </aura:if>
+      
+	<lightning:radioGroup aura:id="incapLightningRadioGroupEl"  name="{! v.name}"
+                             label="{! v.label}"
+                          	 type="{! v.type}"
+                             options="{! v.options }"
+                             value="{! v.value }"
+                             onchange="{! c.handleChange }"
+                             disabled="{! v.disabled}"
+                             required="{! v.required}" />
+        </div>
+    <!--</div>-->
+    <aura:if isTrue="{! v.isHorizontalDisplay }">
+        <aura:html tag="style">
+           .slds-radio { display: inline !important; }
+            .slds-scope .slds-radio .slds-radio_faux, .slds-scope .slds-radio .slds-radio--faux { border-radius: 1px;}
+            .slds-scope .slds-radio [type=radio]:checked+.slds-radio_faux:after, .slds-scope .slds-radio [type=radio]:checked+.slds-radio--faux:after, .slds-scope .slds-radio [type=radio]:checked~.slds-radio_faux:after, .slds-scope .slds-radio [type=radio]:checked~.slds-radio--faux:after, .slds-scope .slds-radio [type=radio]:checked+.slds-radio__label .slds-radio_faux:after, .slds-scope .slds-radio [type=radio]:checked+.slds-radio__label .slds-radio--faux:after {
+            width: .5rem;
+            height: .5rem;
+            position: relative;
+            content: "\f00c";
+            font-family: 'FontAwesome';
+            top: -15%;
+            left: 5%;
+            transform: translate3d(-50%, -50%, 0);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+        </aura:html>
+    </aura:if>
+</aura:component>

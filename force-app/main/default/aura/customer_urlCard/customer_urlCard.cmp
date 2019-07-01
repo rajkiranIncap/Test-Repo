@@ -1,0 +1,18 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="title" type="String" default="Title" description="Card title" />
+    <aura:attribute name="url" type="String" default="/" description="Card URL" />
+    <aura:attribute name="content" type="String" default="Content" description="Card content" />
+    <aura:attribute name="buttonText" type="String" default="Button Text" description="Card button text" />
+    
+	<header class="slds-media slds-media_center slds-has-flexi-truncate">
+        <div class="slds-media__body">
+            <span style="font-size:20px;color:#fd3168">{!v.title}</span><br></br>
+            <p><aura:unescapedHtml value="{!v.content}" /></p>
+            <br></br><br></br>
+            
+            <button style="padding:8px;height:auto;width:auto;font-size:15px;background-color:#999898;color:#ffffff;vertical-align:middle;cursor:pointer"
+                    onclick="{!c.buttonClicked}">{!v.buttonText}</button>
+            
+        </div>
+    </header>
+</aura:component>

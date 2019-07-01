@@ -1,0 +1,7 @@
+<design:component label="Signature Capture">
+	<design:attribute name="parentId" label="Parent Id" description="" />
+    <design:attribute name="body" label="Body" description="" />
+    <design:attribute name="contentType" label="Content Type" description="" />
+    <design:attribute name="fileName" label="File Name" description="" />    
+    
+</design:component>

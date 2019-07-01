@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>The form table metadata will hold the information about the form table which will be utilized in the flow or any other form.</description>
+    <label>Form Table</label>
+    <pluralLabel>Form Tables</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

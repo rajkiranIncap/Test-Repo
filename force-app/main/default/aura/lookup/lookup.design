@@ -1,0 +1,31 @@
+<design:component label="Lookup">
+	<design:attribute name="object"  label="I1_Object Name" />
+    <design:attribute name="displayFieldName" label="I2_Display Which Field?"/>	
+    <design:attribute name="label" label="I3_Field Label" />
+    <design:attribute name="valueFieldName" label="I4_Output Which Field as Value?" />
+    <design:attribute name="parentChild" label="I5_'Parent' or 'Child' Lookup?" />
+    <design:attribute name="filterFieldName" label="I6_Filter on which field?" />
+    <design:attribute name="filterFieldValue" label="I7_Filter Value" /> 	
+    <design:attribute name="selectedValue" label="O1_Output Value" />
+    <design:attribute name="required" label="Required?" />
+    <design:attribute name="defaultValue" label="Default Value"/>
+    <design:attribute name="cmpid" label="Component ID"/>
+    <design:attribute name="parentId" label="Parent ID"/>        
+    <design:attribute name="whereClause" label="Where Clause"/>
+    
+    <!-- new attribute -->
+  <design:attribute name="dependencyId" label="Dependency Id" />
+  <design:attribute name="dependsOnId" label="Dependes On Id" default=""/>
+  <design:attribute name="isRender" label="isRender" default="true"/>
+    
+  <design:attribute name="dependsOnValue" label="Show If Value" default=""/>
+  <design:attribute name="dependsOnHideValue" label="Hide If Value" default=""/>
+  <design:attribute name="isRequiredOnValue" label="Required If Value" default="" />
+  <design:attribute name="isDisabledOnValue" label="Disabled If Value" default=""/>
+  <design:attribute name="isDependsOnValueRegex" label="isRegex: Show If Value" default="false"/>
+  <design:attribute name="isDependsOnHideValueRegex" label="isRegex: Hide If Value" default="false" />
+  <design:attribute name="isRequiredOnValueRegex" label="isRegex: Required If Value" default="false" />
+  <design:attribute name="isDisabledOnValueRegex" label="isRegex: Disabled If Value" default="false" />
+  
+  <design:attribute name="fieldBinding" label="Field Binding" description="Field API name to map this field to. Used when the field is in a repeater card to construct the JSON object." />
+</design:component>

@@ -1,0 +1,28 @@
+<design:component label="Files">
+
+    <design:attribute name="sObjectName"
+                      label="Object Name"
+                      description="API name of Sobject"/>
+
+    <design:attribute name="componentCardTitle"
+                      label="Title"
+                      default="Files"
+                      description="Title of the component on the page."/>
+    <design:attribute name="recordId"
+                      label="Record Id"
+                      description="Record id of the record."/>
+
+<design:attribute name="isContentTypeEnable"
+                      label="Custom Content Type Enabled"
+                      description="If you want to enable the custom content type please enable the attribute and send the sobject api name or picklist field api name."/>  
+<design:attribute name="sobjectApiName"
+                      label="sObject API Name For Content Type"
+                      description="sObject API Name For Content Type."/>  
+<design:attribute name="sobjectFieldApiName"
+                      label="sObject Picklist Field API Name For Content Type"
+                      description="sObject Picklist Field API Name For Content Type."/>      
+<design:attribute name="enableAdditionInformation"
+                      label="Enabled Additional Info to Show"
+                      description="If you want to enable additional information of the file card, make this attribute to true."/>       
+
+</design:component>

@@ -1,0 +1,8 @@
+<!-- 
+* @Author Incapsulate
+* @Since 02-05-2019
+* @Description: This component is used for dynamic picklist.
+-->
+<aura:event type="COMPONENT" description="Event template" >
+    <aura:attribute type="Object" name="dependentObject" />
+</aura:event>

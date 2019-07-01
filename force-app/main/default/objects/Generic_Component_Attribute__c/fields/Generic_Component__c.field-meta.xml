@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Generic_Component__c</fullName>
+    <externalId>false</externalId>
+    <label>Generic Component</label>
+    <referenceTo>Generic_Component__c</referenceTo>
+    <relationshipLabel>Generic Component Attributes</relationshipLabel>
+    <relationshipName>Generic_Component_Attributes</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

@@ -1,0 +1,57 @@
+/*<!--
+@Author Incapsulate
+CSS for File upload 
+-->*/
+
+.THIS .cf-relationship-nav {
+    padding: 0;
+    background-color: yellow;
+}
+.THIS .medium{
+    height: auto;
+    min-width: 30px;
+    max-width: 30px;
+    max-height: 35px;
+}
+.THIS .fileTile{
+    cursor: pointer !important;
+}
+.THIS .slds-card{
+    border: 1px solid rgb(221, 219, 218) !important;
+    border-radius: .25rem !important;
+}
+.THIS.slds-card{
+    border: 1px solid rgb(221, 219, 218) !important;
+    border-radius: .25rem !important;
+} 
+.THIS.slds-card__header {
+    padding: .5rem 0rem 0!important;
+}
+.THIS lightning-input > span{
+    display: none !important;
+}
+.THIS .rightMargin{
+    margin-right: 5%;
+}
+.THIS .leftMargin{
+    margin-left: 5%;
+}
+.THIS .slds-scrollable_y{
+    height: 12rem !important;
+}
+.THIS .slds-card__body{
+    margin-bottom: unset;
+}
+.THIS .slds-card__footer{
+    min-height: 2rem;
+}
+.THIS.slds-scope .slds-truncate {
+    overflow: inherit; 
+}
+
+.THIS .layoutpadding-left-135 {
+    padding-left: 135px;
+}
+.THIS .layoutpadding-left-150 {
+    padding-left: 150px;
+}

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Under Review - OPT</fullName>
+                <default>false</default>
+                <label>Under Review - OPT</label>
+            </value>
+            <value>
+                <fullName>Approved by CPT</fullName>
+                <default>false</default>
+                <label>Approved by CPT</label>
+            </value>
+            <value>
+                <fullName>Published</fullName>
+                <default>false</default>
+                <label>Published</label>
+            </value>
+            <value>
+                <fullName>Under Review - CPT</fullName>
+                <default>false</default>
+                <label>Under Review - CPT</label>
+            </value>
+            <value>
+                <fullName>Draft</fullName>
+                <default>false</default>
+                <label>Draft</label>
+            </value>
+            <value>
+                <fullName>Rejected by CPT</fullName>
+                <default>false</default>
+                <label>Rejected by CPT</label>
+            </value>
+            <value>
+                <fullName>Send for CPT Review</fullName>
+                <default>false</default>
+                <label>Send for CPT Review</label>
+            </value>
+            <value>
+                <fullName>Needs more information - CPT</fullName>
+                <default>false</default>
+                <label>Needs more information - CPT</label>
+            </value>
+            <value>
+                <fullName>Needs more information - OPT</fullName>
+                <default>false</default>
+                <label>Needs more information - OPT</label>
+            </value>
+            <value>
+                <fullName>Reopened - Need more information</fullName>
+                <default>false</default>
+                <label>Reopened - Need more information</label>
+            </value>
+            <value>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+                <label>Submitted</label>
+            </value>
+            <value>
+                <fullName>Rejected by OPT</fullName>
+                <default>false</default>
+                <label>Rejected by OPT</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

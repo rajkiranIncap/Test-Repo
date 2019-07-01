@@ -1,0 +1,67 @@
+<design:component label="Lightning Input">
+  <design:attribute name="accesskey" label="accesskey" default="" description="Specifies a shortcut key to activate or focus an element." />
+  <design:attribute name="checked" label="checked" default="" description="Specifies whether the checkbox is checked. This value defaults to false."/>
+  <design:attribute name="class" label="class" default="" description="A CSS class for the outer element, in addition to the component's base classes."/>
+  <design:attribute name="disabled" label="disabled" default="false" description="Specifies that an input element should be disabled. This value defaults to false." />
+  <design:attribute name="formatter" label="formatter" default="" description="String value with the formatter to be used for number input. Valid values include decimal, percent, percent-fixed, and currency."/>
+  <design:attribute name="label" label="label" default="Label" description="Text label for the input."/>
+  <design:attribute name="max" label="max" default="" description="The maximum acceptable value for the input. This attribute can be used only with number, range, date, time, and datetime input types. For number and range type, the max value is a decimal number. For the date, time, and datetime types, the max value must use a valid string for the type."/>
+  <design:attribute name="maxlength" label="maxlength" default="" description="The maximum number of characters allowed in the field."/>
+  <design:attribute name="min" label="min" default="" description="The minimum acceptable value for the input. This attribute can be used only with number, range, date, time, and datetime input types. For number and range types, the min value is a decimal number. For the date, time, and datetime types, the min value must use a valid string for the type."/>
+  <design:attribute name="minlength" label="minlength" default="" description="The minimum number of characters allowed in the field."/>
+  <design:attribute name="multiple" label="multiple" default="" description="Specifies that a user can enter more than one value. This attribute can be used only when type='file' or type='email'."/>
+  <design:attribute name="name" label="group name (radio)" default="" description="Specifies the name of an input element."/>
+  <design:attribute name="pattern" label="pattern" default="" description="pecifies the regular expression that the input's value is checked against. This attribute is supported for text, search, url, tel, email, and password types."/>
+  <design:attribute name="placeholder" label="placeholder" default="" description="Text that is displayed when the field is empty, to prompt the user for a valid entry."/>
+  <design:attribute name="readonly" label="readonly" default="false" description="Specifies that an input field is read-only. This value defaults to false."/>
+  <design:attribute name="required" label="required" default="false" description="Specifies that an input field must be filled out before submitting the form. This value defaults to false."/>
+  <design:attribute name="step" label="step" default="" description="Granularity of the value, specified as a positive floating point number. Use 'any' when granularity is not a concern. This value defaults to 1."/>
+  <design:attribute name="tabindex" label="tabindex" default=""  description="Specifies the tab order of an element when the Tab key is used for navigating. The tabindex value can be set to 0 or -1. The default is 0, which means that the component is focusable and participates in sequential keyboard navigation. -1 means that the component is focusable but does not participate in keyboard navigation."/>
+  <design:attribute name="title" label="title" default="" description="Displays tooltip text when the mouse moves over the element."/>
+  <design:attribute name="type" label="type" default="text" description="The type of the input. This value defaults to text."/>
+  <design:attribute name="value" label="*value" default="" description="Specifies the value of an input element."/>
+  <design:attribute name="variant" label="variant" default="" description="The variant changes the appearance of an input field. Accepted variants include standard, label-inline, label-hidden, and label-stacked. This value defaults to standard, which displays the label above the field. Use label-hidden to hide the label but make it available to assistive technology. Use label-inline to horizontally align the label and input field. Use label-stacked to place the label above the input field." />
+
+  <design:attribute name="messageToggleActive" label="msg: Toggle Active" default="" description='Text shown for the active state of a toggle. The default is "Active"'/>
+  <design:attribute name="messageToggleInactive" label="msg: Toggle Inactive" default="" description='Text shown for then inactive state of a toggle. The default is "Inactive".'/>
+  <design:attribute name="messageWhenBadInput" label="err: Bad Input" default="" description="Error message to be displayed when a bad input is detected."/>
+  <design:attribute name="messageWhenPatternMismatch" label="err: Pattern Mismatch" default="" description="Error message to be displayed when a pattern mismatch is detected."/>
+  <design:attribute name="messageWhenRangeOverflow" label="err: Range Overflow" default="" description="Error message to be displayed when a range overflow is detected."/>
+  <design:attribute name="messageWhenRangeUnderflow" label="err: Range Underflow" default="" description="Error message to be displayed when a range overflow is detected."/>
+  <design:attribute name="messageWhenStepMismatch" label="err: Step Mismatch" default="" description="Error message to be displayed when a step mismatch is detected."/>
+  <design:attribute name="messageWhenTooLong" label="err: Too Long" default="" description="Error message to be displayed when the value is too long."/>
+  <design:attribute name="messageWhenTypeMismatch" label="err: Type Mismatch" default="" description="Error message to be displayed when a type mismatch is detected."/>
+  <design:attribute name="messageWhenValueMissing" label="err: Value Missing" default="" description="Error message to be displayed when the value is missing."/>
+   <!-- new attribute -->
+  <design:attribute name="dependencyId" label="Dependency Id" description="The id which will be used on the dependent fields to check whether the field needs to be render or not."/>
+  <design:attribute name="dependsOnId" label="Dependes On Id" default="" description="Depends on id is dependency id and this identifies the dependent field."/>
+  <design:attribute name="isRender" label="isRender" default="true" description="By default the field rendering will be true but if the field is dependent on dependency id than the field need not to be rendered and the value of isRender must be false."/>
+    
+  <design:attribute name="dependsOnValue" label="Show If Value" default="" description="The attribute rendering is depends on the values in this attribute. 
+                                                                         The values can be multiple with comma seperated and this value can be define as regex but the 
+                                                                         isDependsOnValueRegex attribute needs to be true if the value is regex.
+                                                                          "/>
+  <design:attribute name="dependsOnHideValue" label="Hide If Value" default="" description="The attribute hidding is depends on the values in this attribute. 
+                                                                         The values can be multiple with comma seperated and this value can be define as regex but the 
+                                                                         isDependsOnHideValueRegex attribute needs to be true if the value is regex
+                                                                         "/>
+  <design:attribute name="isRequiredOnValue" label="Required If Value" default="" description="The attribute required is depends on the values in this attribute. 
+                                                                         The values can be multiple with comma seperated and this value can be define as regex but the 
+                                                                         isRequiredOnValueRegex attribute needs to be true if the value is regex
+                                                                         "/>
+  <design:attribute name="isDisabledOnValue" label="Disabled If Value" default="" description="The attribute disabled is depends on the values in this attribute. 
+                                                                         The values can be multiple with comma seperated and this value can be define as regex but the 
+                                                                         isDisabledOnValueRegex attribute needs to be true if the value is regex
+                                                                         "/>
+  <design:attribute name="isDependsOnValueRegex" label="isRegex: Show If Value" default="false" description="If admin uses the regex value in dependsOnValue attribute, 
+                                                                                                 than this attribute must be true.By default this value is false."/>
+  <design:attribute name="isDependsOnHideValueRegex" label="isRegex: Hide If Value" default="false" description="If admin uses the regex value in dependsOnHideValue attribute, 
+                                                                                                 than this attribute must be true.By default this value is false."/>
+  <design:attribute name="isRequiredOnValueRegex" label="isRegex: Required If Value" default="false" description="If admin uses the regex value in isRequiredOnValue attribute, 
+                                                                                                 than this attribute must be true.By default this value is false."/>
+  <design:attribute name="isDisabledOnValueRegex" label="isRegex: Disabled If Value" default="false" description="If admin uses the regex value in isDisabledOnValue attribute, 
+                                                                                                 than this attribute must be true.By default this value is false."/>
+  
+  <design:attribute name="fieldBinding" label="Field Binding" description="Used when the field is in a repeater card to construct the JSON object." />
+  <design:attribute name="columns" label="Row columns" default="" description="Integer value for css class used in slds ex. 1,2 etc. based on this value it will put column space in row."/>
+</design:component>

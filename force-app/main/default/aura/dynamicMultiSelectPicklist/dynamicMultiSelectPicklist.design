@@ -1,0 +1,5 @@
+<design:component label="Multiselect Picklist">
+	<design:attribute name="mssobject"  label="Sobject API Name" description="API Name of sObject." />
+    <design:attribute name="fieldBinding" label="Field API Name"  description="API Name of sObject field." />
+    <design:attribute name="valueString" label="Selected Options" description="Selected option as commasepearated"/>
+</design:component>

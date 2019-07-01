@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Rate to Propose</label>
+    <protected>false</protected>
+    <values>
+        <field>Action_Plan_Template_Name__c</field>
+        <value xsi:type="xsd:string">Rate Indication Action Plan</value>
+    </values>
+    <values>
+        <field>New_Stage__c</field>
+        <value xsi:type="xsd:string">Propose and Price</value>
+    </values>
+    <values>
+        <field>Previous_Stage__c</field>
+        <value xsi:type="xsd:string">Rate Indication</value>
+    </values>
+</CustomMetadata>

@@ -1,0 +1,4 @@
+<apex:page showHeader="true" sidebar="true">
+	SessionIDStart{!$Api.Session_ID}SessionIDEnd
+	StartVFPageBaseURL{!LEFT($CurrentPage.URL,FIND('/',$CurrentPage.URL,9))}EndVFPageBaseURL
+</apex:page>

@@ -1,0 +1,20 @@
+<design:component label="Input Address">
+	
+	<design:attribute name="addressLabel"  label="Label Address"/>
+	<design:attribute name="streetLabel" label="Label Street" />
+	<design:attribute name="cityLabel"  label="Label City"/>
+	<design:attribute name="countryLabel" label="Label Country" />
+    <design:attribute name="provinceLabel"  label="Label Province/State"/>
+	<design:attribute name="postalCodeLabel"  label="Label PostalCode"/>
+	<design:attribute name="street"  label="Street"/>
+	<design:attribute name="city"  label="City" />
+	<design:attribute name="country" label="Country" />
+    <design:attribute name="province" label="Province/State" />
+	<design:attribute name="postalCode"  label="PostalCode"/>
+    
+    <design:attribute name="controllingFieldAPI" label="Control Field API Name" description="The input records and output map containing saved records" />
+    <design:attribute name="dependingFieldAPI" label="Dependent Field API Name" description="" />
+    <design:attribute name="objectApiName" label="Object Api Name" description="" />
+    <design:attribute name="columns" label="Row columns" default="" />
+    <design:attribute name="required" label="Required" default="" />
+</design:component>

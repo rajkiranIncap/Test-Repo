@@ -1,0 +1,76 @@
+<design:component label="UI Input Date">
+	<design:attribute name="format" label="format" default=""/>
+ 	<design:attribute name="errorMsg" label="Error Message" default=""/>
+    <design:attribute name="columns" label="Columns" default="1"/>
+    <design:attribute name="label" label="Label" default="Date"/>
+    <design:attribute name="value" label="(Not Supported)Date Value As String" default="" description="This Design attribute is not supported now."/>
+    <design:attribute name="valueDate" label="Date Value As Date" default=""/>
+    <design:attribute name="headerDescription" label="Header Description" default=""/>
+    
+     <!-- new attribute -->
+  <design:attribute name="dependencyId" label="Dependency Id" description="The id which will be used on the dependent fields to check whether the field needs to be render or not."/>
+  <design:attribute name="dependsOnId" label="Dependes On Id" default="" description="Depends on id is dependency id and this identifies the dependent field."/>
+  <design:attribute name="isRender" label="isRender" default="true" description="By default the field rendering will be true but if the field is dependent on dependency id than the field need not to be rendered and the value of isRender must be false."/>
+    
+  <design:attribute name="dependsOnValue" label="Show If Value" default="" description="The attribute rendering is depends on the values in this attribute. 
+                                                                         The values can be multiple with comma seperated and this value can be define as regex but the 
+                                                                         isDependsOnValueRegex attribute needs to be true if the value is regex.
+                                                                          "/>
+  <design:attribute name="dependsOnHideValue" label="Hide If Value" default="" description="The attribute hidding is depends on the values in this attribute. 
+                                                                         The values can be multiple with comma seperated and this value can be define as regex but the 
+                                                                         isDependsOnHideValueRegex attribute needs to be true if the value is regex
+                                                                         "/>
+  <design:attribute name="isRequiredOnValue" label="Required If Value" default="" description="The attribute required is depends on the values in this attribute. 
+                                                                         The values can be multiple with comma seperated and this value can be define as regex but the 
+                                                                         isRequiredOnValueRegex attribute needs to be true if the value is regex
+                                                                         "/>
+  <design:attribute name="isDisabledOnValue" label="Disabled If Value" default="" description="The attribute disabled is depends on the values in this attribute. 
+                                                                         The values can be multiple with comma seperated and this value can be define as regex but the 
+                                                                         isDisabledOnValueRegex attribute needs to be true if the value is regex
+                                                                         "/>
+  <design:attribute name="isDependsOnValueRegex" label="isRegex: Show If Value" default="false" description="If admin uses the regex value in dependsOnValue attribute, 
+                                                                                                 than this attribute must be true.By default this value is false."/>
+  <design:attribute name="isDependsOnHideValueRegex" label="isRegex: Hide If Value" default="false" description="If admin uses the regex value in dependsOnHideValue attribute, 
+                                                                                                 than this attribute must be true.By default this value is false."/>
+  <design:attribute name="isRequiredOnValueRegex" label="isRegex: Required If Value" default="false" description="If admin uses the regex value in isRequiredOnValue attribute, 
+                                                                                                 than this attribute must be true.By default this value is false."/>
+  <design:attribute name="isDisabledOnValueRegex" label="isRegex: Disabled If Value" default="false" description="If admin uses the regex value in isDisabledOnValue attribute, 
+                                                                                                 than this attribute must be true.By default this value is false."/>
+    
+ <!--
+Description	Token	Output
+Day of month	d	1 … 31
+Day of month	dd	01 … 31
+Day of month. Deprecated. Use dd, which is identical.	DD	01 … 31
+Day of week (number)	E	0 … 6
+Day of week (short name)	EEE	Sun … Sat
+Day of week (long name)	EEEE	Sunday … Saturday
+Month	M	1 ... 12
+Month	MM	01 … 12
+Month (short name)	MMM	Jan … Dec
+Month (full name)	MMMM	January … December
+Year (two digits)	yy	17
+Year (four digits)	yyyy	2017
+Year. Deprecated. Use yyyy, which is identical.	y	2017
+Year. Deprecated. Use yyyy, which is identical.	Y	2017
+Year. Deprecated. Use yy, which is identical.	YY	17
+Year. Deprecated. Use yyyy, which is identical.	YYYY	2017
+Hour of day (1-12)	h	1 … 12
+Hour of day (0-23)	H	0 … 23
+Hour of day (00-23)	HH	00 … 23
+Hour of day (1-24)	k	1 … 24
+Hour of day (01-24)	kk	01 … 24
+Minute	m	0 … 59
+Minute	mm	00 … 59
+Second	s	0 … 59
+Second	ss	00 … 59
+Fraction of second	SSS	000 … 999
+AM or PM	a	AM or PM
+AM or PM. Deprecated. Use a, which is identical.	A	AM or PM
+Zone offset from UTC	Z	-12:00 … +14:00
+Quarter of year	Q	1 … 4
+Week of year	w	1 … 53
+Week of year	ww	01 … 53
+-->
+	
+</design:component>

@@ -1,0 +1,8 @@
+<!-- 
+        * @Author Incapsulate - 01/31/2019		The child component created to extend the parent component functionality.
+                                            Child component can also enhance the functionality as per requirement.
+-->
+<aura:component implements="lightning:availableForFlowScreens,c:GenericAttributeInterface,forceCommunity:availableForAllPageTypes" access="global" extends="c:lookupFSC">
+    
+<aura:handler event="c:onChangeApplicationEvent" action="{!c.handleApplicationEvent}" description="Application event fire after on change of the field value and execute the skip logic funtionality."/>    	
+</aura:component>

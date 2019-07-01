@@ -1,0 +1,43 @@
+<aura:component implements="force:lightningQuickAction,forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes,force:hasRecordId,force:hasSObjectName"> 
+    
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="record" type="Object" />
+    <aura:attribute name="objCase" type="Object" />
+    <aura:attribute name="selectedProcess" type="String" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <force:recordData aura:id="recordEditor"
+                      fields="Id, QC_Rating__c, QC_Comments__c, QC_decision_is_pass__c"
+                      recordId="{!v.recordId}"
+                      targetRecord="{!v.record}"
+                      targetFields ="{!v.objCase}"
+                      mode="VIEW" />
+    
+    <lightning:workspaceAPI aura:id="workspace" />
+    
+    <lightning:layout >
+        <lightning:layoutItem size="12">
+            <lightning:button aura:id="qcreview" label="QC Review" onclick="{!c.runRelatedFlow}" class="customBtnCls" />
+        </lightning:layoutItem>
+    </lightning:layout>
+    
+    
+    <lightning:overlayLibrary aura:id="overlayLib" />
+    <div role="dialog" tabindex="-1" aria-labelledby="header43" aura:id="Modalbox" class="slds-modal">
+        <div class="slds-modal__container">
+            <div class="slds-modal__header">
+                <lightning:buttonIcon iconName="utility:close" variant="brand" size="medium" class="slds-modal__close" onclick="{!c.hideModal}" />
+                <h2 id="header43" class="slds-text-heading--medium">QC Review</h2>
+            </div>   
+            <div class="slds-modal__content slds-p-around--medium">
+                <div>
+                    <aura:if isTrue="{!v.selectedProcess == 'needbuildinginfo' }">
+                        <lightning:flow aura:id="qcreviewFlow" onstatuschange="{!c.handleCaseCloseStatusChange}"/>
+                    </aura:if>    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</aura:component>

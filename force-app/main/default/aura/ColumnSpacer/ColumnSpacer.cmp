@@ -1,0 +1,19 @@
+<!--
+* @Author Incapsulate
+* @Since 02-05-2019
+* @Description: This component is used to give space between column.
+-->
+<aura:component implements="lightning:availableForFlowScreens,forceCommunity:availableForAllPageTypes" access="global">
+    
+    <aura:attribute name="columns" type="String" default="1"/>
+    <aura:attribute name="label" type="String" default=""/>
+	<div class="{!'slds-size_1-of-1 slds-medium-size_1-of-'+v.columns}" >
+        &nbsp;
+        <aura:if isTrue="{!v.label != ''}">
+            <div class="travelerheader" aria-controls="pi-panel" aria-expanded="false" aria-selected="false" id="pi-tab" role="tab" tabindex="-1">
+                <h2>{!v.label}</h2>
+            </div>            
+        </aura:if>
+        
+    </div>
+</aura:component>

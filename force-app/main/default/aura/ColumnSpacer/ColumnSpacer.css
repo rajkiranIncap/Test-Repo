@@ -1,0 +1,12 @@
+.THIS .travelerheader {
+    padding: 0;
+    clear: both;
+    padding: .3em .8em .3em .6em;
+    margin: 0;
+    border-radius: 3px 3px 0px 0px;
+    color: white;
+    background-color: #e01719;
+    font-size: 1.0rem;
+    line-height: 1.8em;    
+    margin: 0;
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Component_Validate</fullName>
+    <active>true</active>
+    <description>This validation rule check the input value of component_name__c to c:lightningInput. when you have Repeater component name = c:lightningInput than make sure to fill the field component type</description>
+    <errorConditionFormula>LOWER(Component_Name__c  ) = LOWER(&#39;c:lightningInput&#39;)  &amp;&amp;   ISPICKVAL(Component_Type__c, &#39;&#39;)</errorConditionFormula>
+    <errorMessage>Component Type is required for Generic Compoent c:lightningInput</errorMessage>
+</ValidationRule>

@@ -1,0 +1,15 @@
+<aura:component implements="lightning:availableForFlowScreens,forceCommunity:availableForAllPageTypes,force:appHostable" access="global" >
+    <ltng:require afterScriptsLoaded="{!c.Init}"/>
+    <aura:attribute name="parentId" type="String" />
+    <aura:attribute name="body" type="String" />
+    <aura:attribute name="contentType" type="String" default="image/png"/>
+    <aura:attribute name="fileName" type="String" />
+    
+    <div style="text-align: center;">
+        <canvas aura:id="can" style="border:2px solid #ddd;background: transparent;"></canvas>
+    </div>
+    <div style="text-align: center;margin: 7px;">
+        <button class="slds-button slds-button_brand" onclick="{!c.erase}">Clear</button>
+        <button class="slds-button slds-button_brand" onclick="{!c.save}">Capture</button>
+    </div>
+</aura:component>

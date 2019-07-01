@@ -1,0 +1,57 @@
+<aura:component implements="force:lightningQuickAction,forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes,force:hasRecordId,force:hasSObjectName"> 
+    
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="record" type="Object" />
+    <aura:attribute name="objOpportunity" type="Object" />
+    <aura:attribute name="selectedProcess" type="String" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:if isTrue="{!v.recordId}">
+    <force:recordData aura:id="recordEditor"
+                      fields="StageName, Need_Buildings_Info__c"
+                      recordId="{!v.recordId}"
+                      targetRecord="{!v.record}"
+                      targetFields ="{!v.objOpportunity}"
+                      mode="VIEW" />
+    
+    <lightning:workspaceAPI aura:id="workspace" />
+    
+    <lightning:layout >
+        <lightning:layoutItem size="12">
+            <aura:if isTrue="{!v.objOpportunity.Need_Buildings_Info__c}">
+                <lightning:button aura:id="needbuildinginfo" label="Add Building Details" onclick="{!c.runRelatedFlow}" class="customBtnCls" />
+            </aura:if>
+        </lightning:layoutItem>
+    </lightning:layout>
+    
+    
+    <lightning:overlayLibrary aura:id="overlayLib" />
+	<div role="dialog" tabindex="-1" aria-labelledby="header43" aura:id="Modalbox" class="slds-modal">
+        <div class="slds-modal__container">
+            <div class="slds-modal__header">
+                <button onclick="{!c.hideModal}" class="slds-button slds-modal__close slds-button_icon-brand" type="button" title="Close" data-aura-rendered-by="101:0" 
+                        style="color: rgba(255, 255, 255, 0.5);
+    font: 14px/100% arial, sans-serif;
+    position: absolute;
+    right: 5px;
+    text-decoration: none;
+    text-shadow: 0 0px 0 #fff;
+    top: 5px;
+    background: rgb(194, 57, 52);
+    content: 'x';
+    border-color: rgb(194, 57, 52);">X<span class="slds-assistive-text" data-aura-rendered-by="104:0">Close</span>
+                </button>
+                <!--<lightning:buttonIcon iconName="utility:close" variant="brand" size="medium" class="slds-modal__close" onclick="{!c.hideModal}" alternativeText="Close"/>-->
+                <h2 id="header43" class="slds-text-heading--medium">Building Info</h2>
+            </div>   
+            <div class="slds-modal__content slds-p-around--medium">
+                <div>
+                    <aura:if isTrue="{!v.selectedProcess == 'needbuildinginfo' }">
+                    	<lightning:flow aura:id="needbuildinginfoFlow" />
+                    </aura:if>    
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:if>
+</aura:component>

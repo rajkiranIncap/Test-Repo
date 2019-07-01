@@ -1,0 +1,43 @@
+<design:component label="Dynamic Picklist">
+      <design:attribute name="field" label="field" default=""/>
+      <design:attribute name="object" label="object" default="Account"/>
+      <design:attribute name="value" label="value" default=" "/>
+      <design:attribute name="recordTypeDeveloperName" label="Record Type DeveloperName" default=""/>
+      <design:attribute name="label" label="Label" default=""/>
+      <design:attribute name="columns" label="Columns" default=""/>
+      <design:attribute name="Required" label="Required" default="false"/>  
+    
+      <!-- new attribute -->
+  <design:attribute name="dependencyId" label="Dependency Id" description="The id which will be used on the dependent fields to check whether the field needs to be render or not."/>
+  <design:attribute name="dependsOnId" label="Dependes On Id" default="" description="Depends on id is dependency id and this identifies the dependent field."/>
+  <design:attribute name="isRender" label="isRender" default="true" description="By default the field rendering will be true but if the field is dependent on dependency id than the field need not to be rendered and the value of isRender must be false."/>
+    
+  <design:attribute name="dependsOnValue" label="Show If Value" default="" description="The attribute rendering is depends on the values in this attribute. 
+                                                                         The values can be multiple with comma seperated and this value can be define as regex but the 
+                                                                         isDependsOnValueRegex attribute needs to be true if the value is regex.
+                                                                          "/>
+  <design:attribute name="dependsOnHideValue" label="Hide If Value" default="" description="The attribute hidding is depends on the values in this attribute. 
+                                                                         The values can be multiple with comma seperated and this value can be define as regex but the 
+                                                                         isDependsOnHideValueRegex attribute needs to be true if the value is regex
+                                                                         "/>
+  <design:attribute name="isRequiredOnValue" label="Required If Value" default="" description="The attribute required is depends on the values in this attribute. 
+                                                                         The values can be multiple with comma seperated and this value can be define as regex but the 
+                                                                         isRequiredOnValueRegex attribute needs to be true if the value is regex
+                                                                         "/>
+  <design:attribute name="isDisabledOnValue" label="Disabled If Value" default="" description="The attribute disabled is depends on the values in this attribute. 
+                                                                         The values can be multiple with comma seperated and this value can be define as regex but the 
+                                                                         isDisabledOnValueRegex attribute needs to be true if the value is regex
+                                                                         "/>
+  <design:attribute name="isDependsOnValueRegex" label="isRegex: Show If Value" default="false" description="If admin uses the regex value in dependsOnValue attribute, 
+                                                                                                 than this attribute must be true.By default this value is false."/>
+  <design:attribute name="isDependsOnHideValueRegex" label="isRegex: Hide If Value" default="false" description="If admin uses the regex value in dependsOnHideValue attribute, 
+                                                                                                 than this attribute must be true.By default this value is false."/>
+  <design:attribute name="isRequiredOnValueRegex" label="isRegex: Required If Value" default="false" description="If admin uses the regex value in isRequiredOnValue attribute, 
+                                                                                                 than this attribute must be true.By default this value is false."/>
+  <design:attribute name="isDisabledOnValueRegex" label="isRegex: Disabled If Value" default="false" description="If admin uses the regex value in isDisabledOnValue attribute, 
+                                                                                                 than this attribute must be true.By default this value is false."/>
+    
+      
+  <design:attribute name="FromSobject" label="From Sobject" default="" description="If the picklist values are fetching from sobject instead of picklist field, put true in this field."/>
+    
+</design:component>

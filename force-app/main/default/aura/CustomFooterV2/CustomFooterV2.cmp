@@ -1,0 +1,66 @@
+<!-- 
+* @Author Incapsulate
+* @Since 02-05-2019
+* @Description: This component is used for footer.
+-->
+
+<aura:component access="global" implements="lightning:availableForFlowScreens">
+    
+    
+   <!-- Determine which actions are available -->
+   <aura:attribute name="canPause" type="Boolean" />
+   <aura:attribute name="canBack" type="Boolean" />
+   <aura:attribute name="canNext" type="Boolean" />
+   <aura:attribute name="canFinish" type="Boolean" />
+    <!--ILA LITE-->
+    <aura:attribute name="componentCount" type="Integer" default="0"/>
+    <aura:attribute name="ValidityCount" type="Integer" default="0"/>  
+    <aura:attribute name="isValidList" type="List" default="[]"/>
+    <aura:attribute name="actionClicked" type="string"/>
+   <aura:handler name="init" value="{!this}" action="{!c.init}" />
+   <!--ILA LITE-->
+   <aura:handler event="c:eventToCountComponent" action="{!c.handleApplicationCountComponent}" description="Counts the Number of Inout components"/>    	     
+  <!--Declare the validation attribute so it can store the validation logic.--> 
+  <aura:attribute name="validate" type="Aura.Action"/> 
+    
+    <div aura:id="actionButtonBar" class="slds-size_1-of-1 slds-medium-size_1-of-1 slds-clearfix slds-p-top_medium">
+      <!-- If Previous is available, display to the left -->
+      <div class="slds-float_left">         
+      </div>
+      <div class="slds-float_right">
+          <aura:if isTrue="{!v.canBack}">
+            <lightning:button aura:id="BACK" label="Previous"
+               variant="neutral" onclick="{!c.onButtonPressed}" />
+         </aura:if>
+         <!-- If Pause, Next, or Finish are available, display to the right -->
+         <aura:if isTrue="{!v.canPause}">
+            <lightning:button aura:id="PAUSE" label="Pause"
+               variant="neutral" onclick="{!c.onButtonPressed}" />
+         </aura:if>
+         <aura:if isTrue="{!v.canNext}">
+            <lightning:button aura:id="NEXT" label="Next" 
+               variant="brand" onclick="{!c.onButtonPressed}" />
+         </aura:if>
+         <aura:if isTrue="{!v.canFinish}">
+            <lightning:button aura:id="FINISH" label="Finish"
+               variant="brand" onclick="{!c.onButtonPressed}" />
+         </aura:if>
+      </div>
+   </div>
+    <aura:html tag="style">
+              .slds-scope .slds-no-flex {
+                    flex: none;
+                    font-weight: bold;
+                }
+         .body{
+                 display: flex;
+                 flex-wrap: wrap;
+            align-items: flex-start;
+         padding: 5px 5px 15px 5px;
+         }
+        .uiInput--default .form-element__label {
+            font-weight: bold;
+        	font-size: .75rem;
+		}
+    </aura:html>
+</aura:component>

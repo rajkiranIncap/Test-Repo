@@ -1,0 +1,12 @@
+<!-- 
+* @Author Incapsulate
+* @Since 02-05-2019
+* @Description: This component is used for Progress Step.
+-->
+<aura:component access="global" >
+    <aura:attribute name="currentStage" type="String"/>
+    <aura:attribute name="disabled" type="String" default="no"/>
+    
+	           <lightning:progressStep label="{!v.currentStage}" value="{!v.currentStage}" />
+    
+</aura:component>

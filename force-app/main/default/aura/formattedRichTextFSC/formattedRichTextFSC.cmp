@@ -1,0 +1,6 @@
+<aura:component extensible="true" abstract="true">
+	<aura:attribute name="richtext" type="String"/>
+    <div class="{!'padding-px slds-scope slds-medium-size_1-of-'+ v.columns}">
+		<lightning:formattedRichText value="{!v.richtext}" />
+    </div>
+</aura:component>

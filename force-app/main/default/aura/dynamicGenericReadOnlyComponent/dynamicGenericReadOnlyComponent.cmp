@@ -1,0 +1,8 @@
+<aura:component >
+    <aura:attribute name="sobjectFieldApiName" type="String" default=""/>
+    <aura:attribute name="sobjectApiName" type="String" default=""/>
+    <aura:attribute name="description" type="String" default=""/>
+	<div class="{!'slds-size_1-of-1 slds-medium-size_1-of-'+v.columns}" >
+        &nbsp; Test
+    </div>
+</aura:component>

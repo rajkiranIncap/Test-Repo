@@ -1,0 +1,5 @@
+<design:component label="Formatted Rich Text">
+	<design:attribute name="richtext" label="value"/>
+    <design:attribute name="columns" label="Columns" default="1"/>
+    <design:attribute name="label" label="Label" default=""/>
+</design:component>

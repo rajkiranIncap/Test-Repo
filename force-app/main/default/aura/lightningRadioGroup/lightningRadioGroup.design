@@ -1,0 +1,44 @@
+<design:component label="Radio Group">
+	<design:attribute name="optionsJson" label="Options Json List" default='[{"label": "label1", "value": "option1"},{"label": "label2", "value": "option2"}]' description="This value can be either string or boolean array list."/>
+    <design:attribute name="label" label="Label" required="true" default="" description="Text label for the Radio group."/>
+    <design:attribute name="name"  label="Name" description="Specifies the name of an Radio group element."/>
+    
+    <design:attribute name="isHorizontalDisplay" label="Radio Display Horizontal" default="false" description="If you want to display radio group as horizontal and the checkbox as square box than make this attribute to true."/>
+    <design:attribute name="value" label="value" default="" description="if the value is used as string utilize this field for value"/>
+    <design:attribute name="valueAsBoolean" label="Value As Boolean" default="" description="if the value is used as boolean utilize this field for value"/>
+    
+    <design:attribute name="content" label="Help Content" default="" description="if you want to put help content on the field level describe the information here."/>
+    <design:attribute name="columns" label="Columns" default=""/>
+    
+    <!-- new attribute -->
+  <design:attribute name="dependencyId" label="Dependency Id" description="The id which will be used on the dependent fields to check whether the field needs to be render or not."/>
+  <design:attribute name="dependsOnId" label="Dependes On Id" default="" description="Depends on id is dependency id and this identifies the dependent field."/>
+  <design:attribute name="isRender" label="isRender" default="true" description="By default the field rendering will be true but if the field is dependent on dependency id than the field need not to be rendered and the value of isRender must be false."/>
+    
+  <design:attribute name="dependsOnValue" label="Show If Value" default="" description="The attribute rendering is depends on the values in this attribute. 
+                                                                         The values can be multiple with comma seperated and this value can be define as regex but the 
+                                                                         isDependsOnValueRegex attribute needs to be true if the value is regex.
+                                                                          "/>
+  <design:attribute name="dependsOnHideValue" label="Hide If Value" default="" description="The attribute hidding is depends on the values in this attribute. 
+                                                                         The values can be multiple with comma seperated and this value can be define as regex but the 
+                                                                         isDependsOnHideValueRegex attribute needs to be true if the value is regex
+                                                                         "/>
+  <design:attribute name="isRequiredOnValue" label="Required If Value" default="" description="The attribute required is depends on the values in this attribute. 
+                                                                         The values can be multiple with comma seperated and this value can be define as regex but the 
+                                                                         isRequiredOnValueRegex attribute needs to be true if the value is regex
+                                                                         "/>
+  <design:attribute name="isDisabledOnValue" label="Disabled If Value" default="" description="The attribute disabled is depends on the values in this attribute. 
+                                                                         The values can be multiple with comma seperated and this value can be define as regex but the 
+                                                                         isDisabledOnValueRegex attribute needs to be true if the value is regex
+                                                                         "/>
+  <design:attribute name="isDependsOnValueRegex" label="isRegex: Show If Value" default="false" description="If admin uses the regex value in dependsOnValue attribute, 
+                                                                                                 than this attribute must be true.By default this value is false."/>
+  <design:attribute name="isDependsOnHideValueRegex" label="isRegex: Hide If Value" default="false" description="If admin uses the regex value in dependsOnHideValue attribute, 
+                                                                                                 than this attribute must be true.By default this value is false."/>
+  <design:attribute name="isRequiredOnValueRegex" label="isRegex: Required If Value" default="false" description="If admin uses the regex value in isRequiredOnValue attribute, 
+                                                                                                 than this attribute must be true.By default this value is false."/>
+  <design:attribute name="isDisabledOnValueRegex" label="isRegex: Disabled If Value" default="false" description="If admin uses the regex value in isDisabledOnValue attribute, 
+                                                                                                 than this attribute must be true.By default this value is false."/>
+  
+  <design:attribute name="fieldBinding" label="Field Binding" description="Field API name to map this field to. Used when the field is in a repeater card to construct the JSON object." />
+</design:component>

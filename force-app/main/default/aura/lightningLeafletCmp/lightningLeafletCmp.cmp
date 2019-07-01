@@ -1,0 +1,11 @@
+<aura:component implements="force:appHostable">
+    <aura:attribute name="isRendered" type="Boolean" default="true"/>
+    <ltng:require styles="/resource/leaflet/leaflet.css" />    
+    <ltng:require scripts="/resource/leaflet/leaflet.js"
+             afterScriptsLoaded="{!c.jsLoaded}" />
+
+    <aura:if isTrue="{!v.isRendered}">
+    	<div class="map" id="map"></div>
+    </aura:if>
+
+</aura:component>

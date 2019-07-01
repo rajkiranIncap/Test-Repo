@@ -1,0 +1,31 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <div class="slds-grid slds-wrap">
+        
+        <div class="slds-col slds-medium-size_1-of-3 slds-size_1-of-1">
+            <article class="slds-card slds-m-around_medium" Style="height:150px">
+                <div class="slds-card__header slds-grid">
+                    <c:customer_urlCard title="Submit Claim" content="Submit a new claim with our easy online initiation process." buttonText="Submit Claim" url="/start" />
+                </div>
+            </article> 
+            
+            
+        </div>
+        <div class="slds-col slds-medium-size_1-of-3 slds-size_1-of-1">
+            <article class="slds-card slds-m-around_medium" Style="height:150px">
+                <div class="slds-card__header slds-grid">
+                    <c:customer_urlCard title="View Claim Detail" content="View details about your Claim" buttonText="View Claim Detail" url="/policy-detail" />
+                </div>
+            </article> 
+            
+        </div>
+        <!--<div class="slds-col slds-medium-size_1-of-3 slds-size_1-of-1">
+            <article class="slds-card slds-m-around_medium" Style="height:150px">
+                <div class="slds-card__header slds-grid">
+                    <c:customer_urlCard title="View Claim Review" content="View existing claim Review" buttonText="View Claim Review" url="/claim-details" />
+                </div>
+            </article> 
+        </div>-->
+    </div>
+    
+</aura:component>

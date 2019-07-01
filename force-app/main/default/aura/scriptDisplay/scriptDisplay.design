@@ -1,0 +1,3 @@
+<design:component >
+<design:attribute name="scriptText" label="Label Value"  description="Script to be read by the service agent" />
+</design:component>

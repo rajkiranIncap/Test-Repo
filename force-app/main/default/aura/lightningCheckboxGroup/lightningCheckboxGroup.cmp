@@ -1,0 +1,34 @@
+<!-- 
+* @Author Incapsulate
+* @Since 02-05-2019
+* @Description: This component is used for dynamic Checkbox group.
+-->
+<aura:component  implements="lightning:availableForFlowScreens,c:GenericAttributeInterface,forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute name="options" type="List" default="" />
+    <aura:attribute name="label" type="String" required="true" default="" description="Text label for the Checkbox group."/>
+    <aura:attribute name="name" type="String" description="Specifies the name of an Checkbox group element."/>
+    <aura:attribute name="valueList" type="List" default="['']"/>
+    <aura:attribute name="value" type="String" default=""/>
+    <aura:attribute name="columns" type="String" default="2"/>
+    <aura:attribute name="disabled" type="String" description="Specifies that an input field is disabled. This value defaults to false."/>
+  	<aura:attribute name="required" type="String" description="Specifies that an input field must be filled out before submitting the form. This value defaults to false."/>
+	<aura:attribute name="optionsJson" type="String" default='[{"label": "label1", "value": "option1"},{"label": "label2", "value": "option2"}]'/>
+    <aura:attribute name="isHorizontalDisplay" type="Boolean" default="false"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <!-- <div class="slds-grid slds-wrap ">-->
+  <div class="{!'padding-px slds-scope slds-medium-size_1-of-'+ v.columns}">
+    <lightning:checkboxGroup name="{! v.name}"
+                             label="{! v.label}"
+                             options="{! v.options }"
+                             value="{! v.valueList }"
+                             onchange="{! c.handleChange }"
+                             disabled="{! v.disabled}"
+                             required="{! v.required}" class="slds-checkbox-horizontally"/>
+         </div>
+    <!--</div>-->
+    <aura:if isTrue="{! v.isHorizontalDisplay }">
+    <aura:html tag="style">
+       .slds-checkbox { display: inline !important; }
+   	</aura:html>
+    </aura:if>
+</aura:component>

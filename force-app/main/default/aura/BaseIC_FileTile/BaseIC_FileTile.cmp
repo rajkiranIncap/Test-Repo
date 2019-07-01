@@ -1,0 +1,119 @@
+<aura:component access="public" controller="FileRelatedList">
+    <aura:attribute access="public" name="file" type="Object"
+        description="Array of files shared to records of the selected relationship. These are the files displayed in the component." />
+    <aura:attribute access="public" name="selectedFiles" type="Object[]"
+        description="Array of files shared to records of the selected relationship. These are the files displayed in the component." />
+    <aura:attribute access="public" name="baseUrl" type="String" />
+    <aura:attribute access="public" name="fileType" type="String" />
+    <aura:attribute access="private" name="recordError" type="String"/>
+    <aura:attribute access="public" name="filePreview" type="String" />
+    <aura:attribute access="public" name="previewDone" type="Boolean" default="false" />
+    <aura:attribute access="public" name="previewError" type="Boolean" default="false" />
+    <aura:attribute access="public" name="thumbLoaded" type="Boolean" default="false" />
+    <aura:attribute access="public" name="thumbError" type="Boolean" default="false" />
+    <aura:attribute access="public" name="preview" type="Boolean" default="false" description="To Show Preview" />
+    <aura:attribute access="public" name="renditionMap" type="Object" description="Documents Rendition Type Map" />
+    <aura:attribute access="public" name="enableContentType" type="BOolean" default="false" description="" />
+    <aura:attribute access="public" name="enableAdditionInfo" type="BOolean" default="true" description="" />
+    <!-- Handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!--Force:record-->
+    <force:recordData aura:id="deleteFile"
+        recordId="{!v.file.ContentDocumentId}"
+        fields="Id"
+        targetError="{!v.recordError}"
+        recordUpdated="{!c.handleRecordUpdated}" />
+    <!-- Main Markup-->
+    <lightning:layout class="">
+        <lightning:layoutItem class="fileTile" size="10" largeDeviceSize="10" mediumDeviceSize="12" smallDeviceSize="12"
+            flexibility="auto" padding="around-small">
+            <div data-fileId="{!v.file.ContentDocumentId}" onclick="{!c.previewRequest}">
+                <div class="slds-grid">
+                    <!--File Thumbnail-->
+                    <div class="slds-show_inline-block slds-float_left slds-align-middle thumbnailImg medium">
+                        <img src="{! v.baseUrl +'/sfc/servlet.shepherd/version/renditionDownload?rendition=thumb120by90&amp;versionId='+v.file.Id+'&amp;operationContext=CHATTER&amp;contentId='+v.file.ContentBodyId+'&amp;page=0'}"
+                            class="{! 'thumbnailImg medium '+if(v.thumbLoaded,'','slds-hide')}"
+                            onload="{!c.handleThumbLoad}" />
+                        <aura:if isTrue="{! !v.thumbLoaded}">
+                            <lightning:icon iconName="{!v.file.FileTypeIconName}" class="slds-p-right_x-small" />
+                        </aura:if>
+                    </div>
+                    <!--File Details-->
+                    <div class="slds-show_inline-block slds-float_left slds-p-left_x-small  slds-m-right_x-small">
+                        <aura:if isTrue="{!v.enableAdditionInfo}">
+                            <span class="itemTitle slds-text-color_default slds-text-body_regulardesktop uiOutputText"
+                                title="{!v.file.Title}">{!v.file.Title}
+                            </span>
+                            <span>
+                                <p class="slds-m-around_none secondaryFields slds-text-body_small ">
+                                    <span>
+                                        <span class="uiOutputDateTime uiOutputText">
+                                            <lightning:formattedDateTime value="{!v.file.LastModifiedDateTimestamp}" />
+                                        </span>
+                                        <span class="fileSizeAmount uiOutputNumber uiOutputText">
+                                            {!v.file.HumanReadableContentSize}
+                                        </span>
+                                    </span>
+                                </p>
+                            </span>
+                            <span class="fileSizeAmount uiOutputNumber uiOutputText">
+                                   File Type: {!v.file.FileType}
+                            </span><br></br>
+                        </aura:if>
+                        <aura:if isTrue="{!v.enableContentType}">
+                            <span class="itemTitle slds-text-color_default slds-text-body_regulardesktop uiOutputText"
+                                title="{!v.file.Title}"><label style="font-weight: bold;">Title: </label> {!v.file.Title}
+                            </span><br></br>
+                            <span class="itemTitle slds-text-color_default slds-text-body_regulardesktop uiOutputText"
+                                title="{!v.file.ContentType}">
+                                <label style="font-weight: bold;">Type: </label> {!v.file.ContentType}
+                            </span><br></br>
+                            <span class="itemTitle slds-text-color_default slds-text-body_regulardesktop uiOutputText"
+                                title="{!v.file.Description}">
+                                  {!v.file.Description}
+                            </span>
+                        </aura:if>
+                    </div>
+                </div>
+            </div>
+        </lightning:layoutItem>
+        <!--File Actions-->
+        <lightning:layoutItem class="icons" alignmentBump="left" flexibility="auto, no-grow" padding="around-small"
+            size="1">
+            <a href="{! v.baseUrl+'/sfc/servlet.shepherd/document/download/'+v.file.ContentDocumentId+'?operationContext=S1'}"
+                target="_blank">
+                <lightning:icon iconName="utility:download" size="x-small" alternativeText="Download" />
+            </a>
+        </lightning:layoutItem>
+        <lightning:layoutItem class="icons" flexibility="auto, no-grow" padding="around-small">
+            <a onclick="{!c.handleDelete}" data-recId="{!v.file.ContentDocumentId}">
+                <lightning:icon iconName="utility:delete" size="x-small" alternativeText="Delete" />
+            </a>
+        </lightning:layoutItem>
+    </lightning:layout>
+    <!-- Preview modal -->
+    <aura:if isTrue="{!v.preview}">
+        <div aura:id="thecontainer" class="thecontainer darkBackGround" id="thecontainer">
+            <div role="dialog" tabindex="-1" aria-labelledby="header43"
+                class="slds-modal slds-fade-in-open slds-modal_large">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header slds-modal__header_empty">
+                        <lightning:buttonIcon iconName="utility:close" variant="bare" size="large"
+                            class="slds-modal__close" alternativeText="Close" onclick="{!c.colseModal}" />
+                    </header>
+                    <div class="slds-modal__content slds-align_absolute-center" aura:id="modalbody" id="modalbody">
+                        <lightning:spinner alternativeText="Loading" size="large"
+                            class="{! 'LoadingSpinner ' +if(or(v.previewDone,v.previewError),'slds-hide','')}" />
+                            <img style="height: 100% !important;" src="{!v.filePreview}" alt="{!v.file.Title}"
+                                class="{! 'contentThumbnail '+if(v.previewDone,'','slds-hide')}" title="{!v.file.Title}" id="ext-gen7"
+                                onload="{!c.handleOnLoad}" onerror="{!c.handleOnError}"></img>
+                            <aura:if isTrue="{!v.previewError}"> 
+                                <span><lightning:icon iconName="{!v.file.FileTypeIconName}" class="slds-p-right_x-small" />- No Preview available</span>
+                            </aura:if>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+    </aura:if>
+</aura:component>

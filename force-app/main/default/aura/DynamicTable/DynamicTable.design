@@ -1,0 +1,8 @@
+<design:component>
+    <design:attribute name="SObjectName" label="sObject API Name" default="Account" />
+	<design:attribute name="FieldNamesUI" label="Field Names" default="Id" />
+	<design:attribute name="FieldLabelsUI" label="Field Labels" default="" />
+    <design:attribute name="NumberOfRecords" label="Number Of Records" default="5" />
+    <design:attribute name="MatchCriteria" label="Filter Criteria" default="" />
+    
+</design:component>

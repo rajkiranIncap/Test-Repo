@@ -1,0 +1,4 @@
+<design:component Label="Column Spacer">
+	<design:attribute name="columns" label="Columns" default="1"/>
+    <design:attribute name="label" label="Label" default=""/>
+</design:component>

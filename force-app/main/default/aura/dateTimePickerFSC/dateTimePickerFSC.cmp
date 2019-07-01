@@ -1,0 +1,7 @@
+<aura:component access="global" extensible="true" abstract="true">
+	<aura:attribute name="selectedDateTime" type="DateTime" />
+    
+	<ui:inputDateTime aura:id="expdate" label="Schedule Call: " class="form-control"
+  					 value="{!v.selectedDateTime}" displayDatePicker="true" format="MM/dd/yyyy"/>
+
+</aura:component>

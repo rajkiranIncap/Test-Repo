@@ -1,0 +1,130 @@
+<!--
+  Since:  01/05/2019
+  Author: Incapsulate
+  Description: the table form component is to display the row and column grid
+			   data will be rendered based on custom metadata.
+-->
+<aura:component implements="lightning:availableForFlowScreens,forceCommunity:availableForAllPageTypes" controller="FormTableController" access="global">
+	<aura:handler name="calculateValues" event="c:eventToCalculateValues" action="{!c.handleCloumnValueCalculationSync}" description="Component event fire after on change of the field value and execute the logic to get calculated column values."/>    	
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="groupName" type="String" description="The group name used to retrieve form element Dynamic Component metadata records" required="true" default=""/>
+    <aura:attribute name="objectType" type="String" description="The API name of the SObject that to save to" />
+    <aura:attribute name="recordTypeId" type="String" description="The Record Type Id that the SObject should be saved as" />
+    <aura:attribute name="toCreate" type="Object[]" description="List of RepeaterComponentWrapper records to pass to each item" />
+    <aura:attribute name="components" type="Object[]" description="List of dynamically created components to display as items in the form table" />
+
+    <!-- display attributes -->
+    <aura:attribute name="title" type="String" default="" description="The title of the form table" />
+    <aura:attribute name="description" type="String" default="" description="The description of the form table" />
+    <aura:attribute name="columns" type="Integer" default="1" description="The numder of columns in the repeater" />    
+
+    <aura:attribute name="value" type="String" description="JSON value object consisting of saved and deleted lists" />
+    <aura:attribute name="objectVal" type="Object" description="sObject Records as object" />
+    <aura:attribute name="objectValList" type="List" description="sObject Records as object" />
+    <aura:attribute name="recordId" type="String" description="record id to modify the data" />
+    <aura:attribute name="formGroupName" type="String" description="For multiple screen to get the data based on the from group name" />
+    <aura:attribute name="formTableHeader" type="List" description="Form table header list" />
+    <aura:attribute name="sumOfColumnMap" type="Map" description="" />
+    
+    <aura:attribute name="sumMapList" type="List" description="" />    
+    <aura:attribute name="formulaAmount" type="Object" description="" />
+    
+    <aura:attribute name="formulaColumnName" type="String" description="" />
+    <aura:attribute name="formula" type="String" description="" />
+    <aura:attribute name="metadataRecordDeveloperName" type="String" default="Metadata_Record_Developer_Name__c" description="The attribute will hold the sobject field API name which must exist in
+                                                                                  the related sobject to map the metadata record properly while modifying the 
+                                                                                  data" required="true"/>
+    
+	<aura:attribute name="validate" type="Aura.Action"/>     
+    
+    <form name="myform" id="myform" aura:id="myform">
+        <div class="slds-p-around_small slds-text-heading_medium"><h1>{!v.title}</h1></div>
+        <div class="slds-p-bottom_small slds-p-horizontal_small slds-text-heading_medium">
+            <p>{!v.description}</p>
+        </div>
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered" cellspacing="10">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <aura:iteration items="{!v.formTableHeader}" var="header">                          
+                        <th class="{!'slds-size_1-of-1 slds-medium-size_1-of-' + v.columns}" scope="col">
+                            <div class="slds-truncate" title="{!header}">{!header}</div>
+                        </th> 
+                    </aura:iteration>                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="slds-hint-parent">                    
+                    <td colspan="{!v.columns}" scope="col">
+                        <div class="slds-grid slds-wrap " >
+                            <aura:iteration items="{!v.components}" var="cmp">                                
+                                <div class="{!'white_space_normal slds-size_1-of-1 slds-medium-size_1-of-' + v.columns}" >
+                                    {!cmp}
+                                </div>                                
+                            </aura:iteration>                             
+                        </div>
+                    </td>      
+                    
+                </tr>
+            </tbody>
+            <tfoot class="">
+                <tr><td colspan="{!v.columns}">&nbsp;</td></tr>
+                <tr>
+                    <td colspan="{!v.columns}">
+                        <div class="slds-grid slds-wrap"> 
+                            <aura:iteration items="{!v.formTableHeader}" var="header">                
+                                <div class="{!'white_space_normal slds-size_1-of-1 slds-medium-size_1-of-' + v.columns}">                      
+                                    <aura:if isTrue="{!header == 'Column A Deductions'}">
+                                        <div class="slds-form_horizontal">
+                                            Total {!header}: 
+                                            <aura:iteration items="{!v.sumMapList}" indexVar="key" var="item"> 
+                                                <aura:if isTrue="{!item.key == 'column3'}">
+                                                    {!item.value}
+                                                </aura:if>
+                                            </aura:iteration>
+                                        </div>                        
+                                    </aura:if>
+                                    <aura:if isTrue="{!header == 'Column B Additions'}">
+                                        <div class="white_space_normal slds-form_horizontal">
+                                            Total {!header}: 
+                                            <aura:iteration items="{!v.sumMapList}" indexVar="key" var="item"> 
+                                                <aura:if isTrue="{!item.key == 'column4'}">
+                                                    {!item.value}
+                                                </aura:if>
+                                            </aura:iteration>
+                                        </div>                        
+                                    </aura:if>  
+                                    <aura:if isTrue="{!header == 'Column C Interest'}">
+                                        <div class="white_space_normal slds-form_horizontal">
+                                            Total {!header}: 
+                                            <aura:iteration items="{!v.sumMapList}" indexVar="key" var="item"> 
+                                                <aura:if isTrue="{!item.key == 'column5'}">
+                                                    {!item.value}
+                                                </aura:if>
+                                            </aura:iteration>
+                                        </div>                        
+                                    </aura:if>                       
+                                </div>                                
+                            </aura:iteration>                             
+                        </div> 
+                    </td>                    
+                </tr>
+                <tr>
+                    <td colspan="{!v.columns}">
+                        <div class="slds-grid slds-wrap"> 
+                            <div class="{!'slds-size_1-of-1 slds-medium-size_1-of-' + v.columns}">
+                            </div>
+                            <div class="{!'white_space_normal slds-size_1-of-1 slds-medium-size_1-of-' + v.columns}" >
+                                    Contact Name and Telephone Number: Servicing Mortgagee
+                                
+                            </div>
+                            <div class="{!'white_space_normal slds-size_1-of-1 slds-medium-size_1-of-' + v.columns}" >
+                                    Net Claim Amount(columns B - A + C):  ${!v.formulaAmount}
+                            </div>                            
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </form>
+</aura:component>

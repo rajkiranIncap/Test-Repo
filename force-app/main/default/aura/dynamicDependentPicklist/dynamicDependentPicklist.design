@@ -1,0 +1,26 @@
+<design:component label="Dynamic Dependent Picklist">
+    
+	<design:attribute name="controlfieldvalue" label="Control Field Value" description="The input records and output map containing saved records" />
+    <design:attribute name="dependentfieldvalue" label="Dependent Field Value" description="" />
+    <design:attribute name="objectApiName" label="Object Api Name" description="" />
+    <design:attribute name="label" label="Controlling Field Label" description="" />
+    <design:attribute name="dependentLabel" label="Dependent Field Label" description="" />
+    <design:attribute name="description" label="Detail Description" description="" />
+    <design:attribute name="disablecontrollingfield" label="Disable Controlling Field" description="" />
+    <design:attribute name="hiddencontrollingfield" label="Hidden Controlling Field" description="" />
+    <design:attribute name="columns" label="Columns" description="" />
+    <design:attribute name="parentRequired" label="parentRequired" default="false"/>
+    <design:attribute name="ChildRequired" label="ChildRequired" default="false"/>
+    
+    <!-- if dependent picklist comes from the sobject data 
+		Ex. controlling field sobject API country__c, depedent list comes from state__c 
+    -->
+    <design:attribute name="isDepedentBasedOnSobjects" default="false" 
+                    description="if dependent picklist comes from the sobject data 
+		Ex. controlling field sobject API controllingSobjectAPI=country__c, depedent list comes from dependentSobjectAPI=state__c, 
+                                 controllingSobjectFieldAPI=Name,dependentSobjectFieldAPI=Name"/>
+    <design:attribute name="controllingSobjectAPI" label="Controlling sObject API Name" default=""/>
+    <design:attribute name="dependentSobjectAPI" label="Dependent sObject API Name" default=""/>
+    <design:attribute name="controllingFieldAPI" label="Controlling sObjectField API Name" default=""/>
+    <design:attribute name="dependingFieldAPI" label="Dependent sObject Field API Name" default=""/>
+</design:component>

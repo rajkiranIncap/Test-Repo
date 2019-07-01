@@ -1,0 +1,22 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <div class="slds-grid slds-wrap">
+        
+        <div class="slds-col slds-medium-size_1-of-2 slds-size_1-of-1">
+            <article class="slds-card slds-m-around_medium" Style="height:200px">
+                <div class="slds-card__header slds-grid">
+                    <c:customer_urlCard title="Start a Claim" content="Your client has a claim. Start filing the claim on their behalf here to accelerate the process." buttonText="Start a Claim" url="/start-a-claim" />
+                </div>
+            </article> 
+        </div>
+        
+        <div class="slds-col slds-medium-size_1-of-2 slds-size_1-of-1">
+            <article class="slds-card slds-m-around_medium" Style="height:200px">
+                <div class="slds-card__header slds-grid">
+                    <c:customer_urlCard title="New Opportunity" content="New Potential commercial client? Start the process here to fill a short form and receive a quote." buttonText="New Opportunity" url="new-opportunity" />
+                </div>
+            </article> 
+        </div>
+    </div>
+    
+</aura:component>

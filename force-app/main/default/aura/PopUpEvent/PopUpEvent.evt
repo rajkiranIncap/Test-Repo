@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="Pop Up Event">
+    <aura:attribute name="confirmation" type="String" default="No" />
+</aura:event>

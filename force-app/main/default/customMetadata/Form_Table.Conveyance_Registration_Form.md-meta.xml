@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Conveyance Registration Form</label>
+    <protected>false</protected>
+    <values>
+        <field>Column_1__c</field>
+        <value xsi:type="xsd:string">Line Number</value>
+    </values>
+    <values>
+        <field>Column_2__c</field>
+        <value xsi:type="xsd:string">Description</value>
+    </values>
+    <values>
+        <field>Column_3__c</field>
+        <value xsi:type="xsd:string">Column A Deductions</value>
+    </values>
+    <values>
+        <field>Column_4__c</field>
+        <value xsi:type="xsd:string">Column B Additions</value>
+    </values>
+    <values>
+        <field>Column_5__c</field>
+        <value xsi:type="xsd:string">Column C Interest</value>
+    </values>
+    <values>
+        <field>Formula_Column_Name__c</field>
+        <value xsi:type="xsd:string">column4,column3,column5</value>
+    </values>
+    <values>
+        <field>Formula__c</field>
+        <value xsi:type="xsd:string">column4 - column3 + column5</value>
+    </values>
+    <values>
+        <field>Group_Name__c</field>
+        <value xsi:type="xsd:string">Conveyance claim</value>
+    </values>
+</CustomMetadata>

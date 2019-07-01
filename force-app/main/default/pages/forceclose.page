@@ -1,0 +1,16 @@
+<apex:page showChat="false" showHeader="false" sidebar="false" applyBodyTag="false" applyHtmlTag="false">
+    <flow:interview name="New_Opportunity"/>
+<html>
+    <head>
+        <title>ESCAPE</title>
+        <script>
+            function closeWindow() {
+                window.open('','_parent','');
+                window.close();
+            }
+        </script>       
+    </head>
+    <body onload="closeWindow()">          
+    </body>
+</html>
+</apex:page>

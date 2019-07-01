@@ -1,0 +1,5 @@
+<design:component label="RichText Input">
+	<design:attribute name="columns" label="Columns" default="1"/>
+    <design:attribute name="label" label="Label" default=""/>
+    <design:attribute name="value" label="value" />
+</design:component>

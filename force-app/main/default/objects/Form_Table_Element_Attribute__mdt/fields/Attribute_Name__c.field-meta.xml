@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Attribute_Name__c</fullName>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Attribute Name</label>
+    <required>true</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>label</fullName>
+                <default>true</default>
+                <label>label</label>
+            </value>
+            <value>
+                <fullName>fieldBinding</fullName>
+                <default>false</default>
+                <label>fieldBinding</label>
+            </value>
+            <value>
+                <fullName>isRequired</fullName>
+                <default>false</default>
+                <label>isRequired</label>
+            </value>
+            <value>
+                <fullName>value</fullName>
+                <default>false</default>
+                <label>value</label>
+            </value>
+            <value>
+                <fullName>disabled</fullName>
+                <default>false</default>
+                <label>disabled</label>
+            </value>
+            <value>
+                <fullName>richtext</fullName>
+                <default>false</default>
+                <label>richtext</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

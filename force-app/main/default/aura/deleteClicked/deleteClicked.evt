@@ -1,0 +1,6 @@
+<!-- 
+* @Author Incapsulate
+* @Since 02-05-2019
+* @Description: This component is used for delete click.
+-->
+<aura:event type="COMPONENT" description="Event fire to notify parent that delete was clicked" />

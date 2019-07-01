@@ -1,0 +1,26 @@
+<!-- 
+  @author: Incapsulate
+  @since:  26/05/2019	
+  @Description: This component is used to full the requirment for date time input field. 
+                KnownIssues- No Fix
+                ui:inputDateTime component format attribute does not get applied
+                https://success.salesforce.com/issues_view?id=a1p3A000000AU8aQAG
+-->
+<aura:component implements="lightning:availableForFlowScreens,c:GenericAttributeInterface,forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute name="format" default="MMM d, yyyy" type="string" description="Default value for date format is MMM d, yyyy.Define your own valid format for the date field to display in the input text box ex: dd-MM-yyyy "/>
+    <aura:attribute name="value" default="" type="String" description="Value to display on ui and persist to database."/>
+    <aura:attribute name="label" default="Date" type="String" description="Label for the input field. Default label is Date."/>
+    <aura:attribute name="errorMsg" default="Enter valid date format" type="String" description="error message while user enters wrong date"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> 
+    <aura:attribute name="columns" type="String" default="1"/>
+    
+    <aura:if isTrue="{!v.isRender}"> 
+        
+        <div class="{!'slds-scope slds-medium-size_1-of-'+v.columns}">
+            <ui:inputDateTime aura:id="inputDateTime"  value="{!v.value}" label="{!v.label}" displayDatePicker="true" format="{!v.format}"
+                              change="{!c.validatedate}" />
+            
+        </div>
+        
+    </aura:if>
+</aura:component>

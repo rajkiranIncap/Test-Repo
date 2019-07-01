@@ -1,0 +1,44 @@
+<!-- 
+* @Author Incapsulate
+* @Since 02-05-2019
+* @Description: This component is used for dynamic Table.
+-->
+<aura:interface description="Generic Interface to hold the common attribute which needs to be implement in multiple component.">
+    	<aura:registerEvent name="onchangeAppEvent" type="c:onChangeApplicationEvent" description="On change application event will handle the dependent field skip logic."/>
+    	<aura:registerEvent name="onChangeEventToSyncSobject" type="c:eventToSyncSobject" description="On change application event will handle the dependent field skip logic."/>
+  		<aura:attribute name="dependencyId" type="String" description="The id which will be used on the dependent fields to check whether the field needs to be render or not."/>
+        <aura:attribute name="dependsOnId" type="String" description="Depends on id is dependency id and this identifies the dependent field."/>
+        <aura:attribute name="isRender" type="Boolean" default="true" description="By default the field rendering will be true but if the field is dependent on dependency id than the field need not to be rendered and the value of isRender must be false."/>    
+        
+    	<aura:attribute name="dependsOnValue" type="String" description="The attribute rendering is depends on the values in this attribute. 
+                                                                         The values can be multiple with comma seperated and this value can be define as regex but the 
+                                                                         isDependsOnValueRegex attribute needs to be true if the value is regex.
+                                                                          "/>
+    	<aura:attribute name="dependsOnHideValue" type="String" description="The attribute hidding is depends on the values in this attribute. 
+                                                                         The values can be multiple with comma seperated and this value can be define as regex but the 
+                                                                         isDependsOnHideValueRegex attribute needs to be true if the value is regex
+                                                                         "/>
+    	<aura:attribute name="isRequiredOnValue" type="String" description="The attribute required is depends on the values in this attribute. 
+                                                                         The values can be multiple with comma seperated and this value can be define as regex but the 
+                                                                         isRequiredOnValueRegex attribute needs to be true if the value is regex
+                                                                         "/>
+    	<aura:attribute name="isDisabledOnValue" type="String" description="The attribute disabled is depends on the values in this attribute. 
+                                                                         The values can be multiple with comma seperated and this value can be define as regex but the 
+                                                                         isDisabledOnValueRegex attribute needs to be true if the value is regex
+                                                                         "/>
+        
+     	<aura:attribute name="isDependsOnValueRegex" type="Boolean" default="false" description="If admin uses the regex value in dependsOnValue attribute, 
+                                                                                                 than this attribute must be true.By default this value is false."/>
+    	<aura:attribute name="isDependsOnHideValueRegex" type="Boolean" default="false" description="If admin uses the regex value in dependsOnHideValue attribute, 
+                                                                                                 than this attribute must be true.By default this value is false."/>
+    	<aura:attribute name="isRequiredOnValueRegex" type="Boolean" default="false" description="If admin uses the regex value in isRequiredOnValue attribute, 
+                                                                                                 than this attribute must be true.By default this value is false."/>
+    	<aura:attribute name="isDisabledOnValueRegex" type="Boolean" default="false" description="If admin uses the regex value in isDisabledOnValue attribute, 
+                                                                                                 than this attribute must be true.By default this value is false."/>
+		<aura:attribute name="fieldBinding" default="" type="String" description="Field API name to map this field to. Used when the field is in a repeater card to construct the JSON object." />    	
+    	<aura:attribute name="genericObjectValue" type="object" description="This attribute is used for developer internal purpose to store the object value and transfer into event or form as required. " />
+    	<aura:attribute name="indexVal" type="String" description="Indes value is used to find the index of card or component in case of multiple instance exist." />
+    	<aura:attribute name="parentFieldName" type="String" description="Parent field name is the sobject field api name which we define while creating the lookup field." />
+    	<aura:attribute name="outerClass" type="String" description="Its used for css override" />
+    	
+</aura:interface>

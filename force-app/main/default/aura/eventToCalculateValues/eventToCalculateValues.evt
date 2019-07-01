@@ -1,0 +1,8 @@
+<!-- 
+* @Author Incapsulate
+* @Since 02-05-2019
+* @Description: This event is used to calculate Values.
+-->
+<aura:event type="COMPONENT" description="Event template" >
+    <aura:attribute name="FormTableDetailObject" type="Object" />
+</aura:event>

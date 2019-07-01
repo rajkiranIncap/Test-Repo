@@ -1,0 +1,8 @@
+<!--        
+  @Author: Incapsulate
+  @Since: 01/31/2019	
+  @Description: This event used for onchange.
+-->
+<aura:event type="COMPONENT" description="Application event fire after on change of the field value and execute the skip logic funtionality." >
+    <aura:attribute name="fieldValueObject" type="Object" />
+</aura:event>

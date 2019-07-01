@@ -1,0 +1,41 @@
+<aura:component  access="global" extensible="true" abstract="true">
+	<aura:handler name="change" value="{! v.country }" action="{! c.onControllerFieldChange }"/>
+    <aura:handler name="change" value="{! v.province }" action="{! c.onStateFieldChange }"/>
+	
+	<aura:attribute name="addressLabel" type="String" default="Address" />
+	<aura:attribute name="streetLabel" type="String" default="Street"/>
+	<aura:attribute name="cityLabel" type="String" default="City"/>
+	<aura:attribute name="countryLabel" type="String" default="Country"/>
+	<aura:attribute name="provinceLabel" type="String" default="State"/>
+	<aura:attribute name="postalCodeLabel" type="String" default="Zip Code" />
+	<aura:attribute name="street" type="String" />
+	<aura:attribute name="city" type="String" />
+	<aura:attribute name="country" type="String" />
+	<aura:attribute name="province" type="String" />
+	<aura:attribute name="postalCode" type="String" />
+    
+	
+
+ <!-- <div class="slds-grid slds-wrap ">-->
+  <div class="{!'padding-px slds-scope slds-medium-size_1-of-'+ v.columns}">
+        <lightning:inputAddress
+            addressLabel="{! v.addressLabel }"
+			countryLabel="{! v.countryLabel }"
+            provinceLabel="{! v.provinceLabel }"
+            cityLabel="{! v.cityLabel }"
+            streetLabel="{! v.streetLabel }"
+            postalCodeLabel="{! v.postalCodeLabel }"
+                                
+            country="{! v.country }"
+			province="{! v.province }"
+            city="{! v.city }"
+			street="{! v.street }"
+            postalCode="{! v.postalCode }"
+            countryOptions="{! v.listControllingValues }"
+            provinceOptions="{! v.listDependingValues }"
+            required="{! v.required}"
+        />
+
+    <!--</div>-->
+    </div>
+</aura:component>

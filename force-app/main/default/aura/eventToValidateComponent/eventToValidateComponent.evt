@@ -1,0 +1,11 @@
+<!-- 
+* @Author Incapsulate
+* @Since 02-05-2019
+* @Description: This event is used to validate the component.
+-->
+<aura:event type="APPLICATION" description="validates the component" >
+     <aura:attribute name="calledForCount" type="Boolean" />
+    <aura:attribute name="isValid" type="Boolean" />
+    <aura:attribute name="calledForValidation" type="Boolean" />
+     
+</aura:event>

@@ -1,0 +1,43 @@
+<!--        
+  @Author: Incapsulate
+  @Since: 01/31/2019	
+  @Description: The component is used for repeater card.
+-->
+<aura:component access="global">
+    <aura:registerEvent name="deleteClicked" type="c:deleteClicked" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:method name="validate" action="{!c.validate}" />
+    <aura:method name="getValue" action="{!c.getValue}" />
+    
+    <aura:attribute name="parentFieldName" type="String" description="" />
+    <aura:attribute name="value" access="global" type="Object" description="The SObject record that is used to initialize the values during init. Only updates after getValue is called." />
+    <aura:attribute name="toCreate" type="Object[]" description="List of DynamicComponentWrapper records to create dynamically" />
+    <aura:attribute name="components" type="Object[]" description="List of dynamically created components to be displayed in the card" />
+    <aura:attribute name="cardIcon" type="String" default="standard:account" description="The icon to use for the card, formatted as &quot;category:icon&quot;" />
+    <aura:attribute name="deleteIcon" type="String" default="utility:delete" description="The icon to use for delete, formatted as &quot;category:icon&quot;" />
+    <aura:attribute name="columns" type="Integer" default="1" description="The numder of columns in the card" />
+    <aura:attribute name="styleClass" type="String" default="slds-p-bottom_small slds-p-horizontal_small flowRepeaterCard" description="" />
+    <aura:attribute name="title" type="String" default="New Item" description="" />
+    <aura:attribute name="description" type="String" default="" description="" />
+    <aura:attribute name="cardIndex" type="Integer" default="0" description="" />
+
+    <div class="{!v.styleClass}">
+        <lightning:card title="{!v.title}" iconName="{!v.cardIcon}" footer="">
+            <aura:set attribute="actions">
+                <lightning:buttonIcon iconName="{!v.deleteIcon}" variant="border-filled" alternativeText="Show More" onclick="{!c.deleteClicked}" />
+            </aura:set>
+            <div>
+                <p>{!v.description}</p>
+            </div>
+            <div class="slds-grid slds-wrap">
+                <aura:iteration items="{!v.components}" var="cmp">
+                    <div class="{!'padding-center slds-size_1-of-1 slds-medium-size_1-of-' + v.columns}">
+                        {!cmp}
+                    </div>
+                </aura:iteration>
+            </div>
+        </lightning:card>
+    </div>
+</aura:component>

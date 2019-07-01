@@ -1,0 +1,23 @@
+<!-- 
+* @Author Incapsulate
+* @Since 02-05-2019
+* @Description: This component is used for dynamic Text Area.
+-->
+<aura:component implements="lightning:availableForFlowScreens,c:GenericAttributeInterface,forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:handler event="c:onChangeApplicationEvent" action="{!c.handleApplicationEvent}" description="Application event fire after on change of the field value and execute the skip logic funtionality."/>    	
+    <aura:handler name="init" value="{!this}" action="{!c.init}" description="init fuction to hanlde initial munipulation or dom or any client-server update."/>   
+    <aura:handler event="c:eventToValidateComponent" action="{!c.handleApplicationValidateComponent}" description="Counts the Number of Inout components"/>    	     
+    
+	<aura:attribute name="columns" type="String" />
+	<aura:attribute name="label" type="String" />
+    <aura:attribute name="value" type="String" />
+    <aura:attribute name="readonly" type="String" />
+    <aura:attribute name="Required" type="Boolean" default = "false" />
+    
+    <div class="{!'padding-px slds-scope slds-medium-size_1-of-'+ v.columns}">
+         <lightning:textarea name="textarea" 
+                             readonly="{!v.readonly}" 
+                             value="{!v.value}" 
+                             label="{!v.label}" required="{!v.Required}" aura:id="incapLightningInputEl" />
+    </div>
+</aura:component>

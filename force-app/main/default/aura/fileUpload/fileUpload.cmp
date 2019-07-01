@@ -1,0 +1,17 @@
+<!--
+@Author Incapsulate
+File upload is used to attached the file and saved in the standard content objects 
+-->
+<aura:component implements="lightning:availableForFlowScreens" access="global" extends="c:fileUploadParentCmp">
+    
+	<aura:attribute access="public" name="typeValue" type="String" />
+    <aura:attribute access="public" name="titleValue" type="String" />
+    <aura:attribute access="public" name="commentValue" type="String" />    
+    <aura:attribute access="public" name="isContentTypeEnable" type="Boolean" default="false" />
+    <aura:attribute access="public" name="sobjectApiName" type="String" description="API name of Sobject"/>
+    <aura:attribute access="public" name="sobjectFieldApiName" type="String" />
+    
+    <aura:attribute access="public" name="enableAdditionInformation" type="Boolean" default="true"/>    
+    
+    <aura:handler name="init" value="{!this}" action="{!c.myActionInit}"/>
+</aura:component>
